@@ -1,0 +1,33 @@
+/*reset css*/
+@import url('./reset.css');
+
+/* global css */
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  font-family: 'SUITE-Regular';
+}
+
+/* header */
+.header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  width: 100%;
+  padding: 1.5rem;
+
+  background-color: black;
+  color: white;
+}
+
+.header__title {
+  font-size: 2rem;
+}
