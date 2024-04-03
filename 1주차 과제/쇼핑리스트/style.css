@@ -31,6 +31,7 @@ a:active {
 /* nav바 position 부모 지정 */
 body {
   position: relative;
+  /* padding-top: 7rem; */
 }
 
 /* header */
@@ -176,11 +177,13 @@ body {
 
 .nav-section__items > li:hover,
 .nav-section__items > li > a:hover {
+  color: #fcf6f5;
   background-color: pink;
 }
 
 .main > section {
   margin-bottom: 2rem;
+  scroll-margin-top: 6rem;
 }
 
 /* 이미지 섹션 헤더 공통 스타일 */
