@@ -255,3 +255,8 @@ body {
 .item-container > i {
   background-color: white;
 }
+
+/* 좋아요 아이콘 호버 */
+.like-icon:hover {
+  color: pink;
+}
