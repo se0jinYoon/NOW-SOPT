@@ -219,6 +219,7 @@ body {
   padding: 1rem 1rem;
 
   background-color: white;
+  cursor: pointer;
 }
 
 /* 아이템이 2개 or 1개일때만 크기 조정되도록 */
@@ -226,6 +227,23 @@ body {
   .item-container {
     flex-grow: 1;
   }
+}
+
+/* 커졌다 작아졌다 애니메이션 */
+@keyframes shrinkAndGrow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.item-container:hover {
+  animation: shrinkAndGrow 1.5s ease-in-out infinite;
 }
 
 .item-container > img {
