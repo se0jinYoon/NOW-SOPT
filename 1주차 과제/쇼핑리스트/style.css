@@ -11,6 +11,7 @@
 
 * {
   font-family: 'SUITE-Regular';
+  background-color: azure;
 }
 
 /* header */
@@ -28,10 +29,12 @@
 
   background-color: black;
   color: white;
+  z-index: 2;
 }
 
 .header__title {
   font-size: 2rem;
+  background-color: black;
 }
 
 /* main 전체 스타일링 */
@@ -48,6 +51,8 @@
   position: relative;
   overflow: hidden;
 
+  margin-bottom: 2rem;
+
   width: 100%;
   height: 13rem;
 }
@@ -61,11 +66,11 @@
   width: max-content;
   height: 13rem;
 
-  animation: banner-section-1 12s linear infinite;
+  animation: banner-section-1 15s linear infinite;
 }
 
 .banner-box.list2 {
-  animation: banner-section-2 12s linear infinite;
+  animation: banner-section-2 15s linear infinite;
 }
 
 .banner-box > img {
@@ -91,4 +96,45 @@
   100% {
     transform: translateX(0%);
   }
+}
+
+/* 이미지 섹션 헤더 공통 스타일 */
+.all-section__header {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* 전체 이미지 섹션 */
+.all-section__img-container {
+  display: flex;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  align-items: center;
+
+  width: 100%;
+}
+
+.item-container {
+  display: flex;
+  gap: 0.4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 12.7rem;
+
+  padding: 1rem 1rem;
+  flex-grow: 1;
+
+  background-color: white;
+}
+
+.item-container > img {
+  width: 10rem;
+  height: 12rem;
+}
+
+.item-container > p,
+.item-container > i {
+  background-color: white;
 }
