@@ -14,6 +14,25 @@
   background-color: azure;
 }
 
+/* a 태그 기본 스타일 제거 */
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+}
+
+/* nav바 position 부모 지정 */
+body {
+  position: relative;
+}
+
 /* header */
 .header {
   display: flex;
@@ -96,6 +115,70 @@
   }
 }
 
+/* nav 영역 */
+.nav-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 20rem;
+  left: 3rem;
+
+  width: 12rem;
+
+  padding: 1.5rem 2rem 2rem;
+
+  background-color: black;
+  border-radius: 5px;
+}
+
+.nav-section__title {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+
+  color: white;
+  background-color: black;
+}
+
+.nav-section__items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.3rem;
+
+  padding: 1rem;
+  border-radius: 5px;
+
+  width: 100%;
+
+  background-color: white;
+}
+
+.nav-section__items > li {
+  display: flex;
+  text-align: center;
+
+  width: 100%;
+
+  background-color: white;
+}
+
+.nav-section__items > li > a {
+  display: block;
+
+  width: 100%;
+
+  background-color: white;
+}
+
+.nav-section__items > li:hover,
+.nav-section__items > li > a:hover {
+  background-color: pink;
+}
+
 .main > section {
   margin-bottom: 2rem;
 }
@@ -125,8 +208,8 @@
   display: flex;
   gap: 0.4rem;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 
   width: 12.7rem;
 
