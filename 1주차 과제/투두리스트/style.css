@@ -38,7 +38,7 @@ button {
   justify-content: center;
   align-items: center;
 
-  margin-top: 2rem;
+  margin: 2rem 0 7rem 0;
 }
 
 .header__title {
@@ -75,4 +75,63 @@ button {
   color: black;
   background-color: white;
   box-shadow: inset 0rem 0rem 0.5rem #2e3c7e;
+}
+
+/* main */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10rem;
+}
+
+.not-started-section,
+.done-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.section__title {
+  font-size: 1.5rem;
+}
+
+.item__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.item__container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0.4rem;
+
+  border-radius: 1rem;
+  width: 15rem;
+  padding: 1rem 1rem;
+  background-color: white;
+}
+
+.item__name {
+  width: 100%;
+  font-size: 1rem;
+  color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: white;
+}
+
+.close-btn {
+  border-radius: 10rem;
+  background-color: #fbeaeb;
+  color: black;
+  width: 1.5rem;
+  height: 1.5rem;
 }
