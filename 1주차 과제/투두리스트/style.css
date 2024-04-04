@@ -11,7 +11,10 @@
 
 * {
   font-family: 'SUITE-Regular';
-  background-color: #fbeaeb;
+}
+
+body {
+  background: linear-gradient(45deg, #f2efd4, #fbeaeb);
 }
 
 /* input 기본 스타일 제거 */
