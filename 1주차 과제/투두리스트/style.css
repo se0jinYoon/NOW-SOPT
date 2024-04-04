@@ -116,7 +116,7 @@ button {
   padding: 1rem;
   background-color: white;
   cursor: pointer;
-  /* animation: shrinkAndGrow 1.5s ease-in-out infinite; */
+  animation: shrinkAndGrow 1.5s ease-in-out infinite;
 }
 
 .item__name {
