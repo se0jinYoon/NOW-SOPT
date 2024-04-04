@@ -103,19 +103,20 @@ button {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.7rem;
+  gap: 1rem;
 }
 
 .item__container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.4rem;
 
   border-radius: 1rem;
-  width: 15rem;
-  padding: 1rem 1rem;
+  width: 17rem;
+  padding: 1rem;
   background-color: white;
+  cursor: pointer;
+  /* animation: shrinkAndGrow 1.5s ease-in-out infinite; */
 }
 
 .item__name {
@@ -126,12 +127,27 @@ button {
   text-overflow: ellipsis;
   white-space: nowrap;
   background-color: white;
+  margin-right: 0.5rem;
 }
 
 .close-btn {
   border-radius: 10rem;
   background-color: #fbeaeb;
   color: black;
+
   width: 1.5rem;
   height: 1.5rem;
+}
+
+/* 커졌다 작아졌다 애니메이션 */
+@keyframes shrinkAndGrow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
