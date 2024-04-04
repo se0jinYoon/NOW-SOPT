@@ -13,3 +13,66 @@
   font-family: 'SUITE-Regular';
   background-color: #fbeaeb;
 }
+
+/* input 기본 스타일 제거 */
+input {
+  all: unset;
+}
+
+/* button 기본 스타일 제거 */
+button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+}
+
+/* header */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 2rem;
+}
+
+.header__title {
+  font-size: 2rem;
+  color: #2e3c7e;
+}
+
+.header__input-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header__input {
+  padding: 0.5rem 1rem;
+
+  width: 20rem;
+  height: 3rem;
+  border-radius: 1rem;
+
+  font-size: 1.3rem;
+
+  background-color: white;
+  box-shadow: inset 0rem 0rem 0.5rem gray;
+}
+
+.header__input-btn {
+  width: 4rem;
+  height: 3rem;
+  border-radius: 1rem;
+
+  font-size: 1.5rem;
+
+  color: black;
+  background-color: white;
+  box-shadow: inset 0rem 0rem 0.5rem #2e3c7e;
+}
