@@ -1,0 +1,164 @@
+/*reset css*/
+@import url('./reset.css');
+
+/* global css */
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  font-family: 'SUITE-Regular';
+}
+
+body {
+  background: linear-gradient(45deg, #f2efd4, #fbeaeb);
+}
+
+/* input 기본 스타일 제거 */
+input {
+  all: unset;
+}
+
+/* button 기본 스타일 제거 */
+button {
+  padding: 0;
+
+  border: none;
+  border-radius: 0;
+  background: inherit;
+  box-shadow: none;
+
+  overflow: visible;
+  cursor: pointer;
+}
+
+/* header */
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  margin: 2rem 0 7rem 0;
+}
+
+.header__title {
+  font-size: 2rem;
+  color: #2e3c7e;
+}
+
+.header__input-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header__input {
+  padding: 0.5rem 1rem;
+  width: 20rem;
+  height: 3rem;
+
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: inset 0rem 0rem 0.5rem gray;
+
+  font-size: 1.3rem;
+}
+
+.header__input-btn {
+  width: 4rem;
+  height: 3rem;
+  border-radius: 1rem;
+
+  font-size: 1.5rem;
+
+  color: black;
+  background-color: white;
+  box-shadow: inset 0rem 0rem 0.5rem #2e3c7e;
+}
+
+/* main */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10rem;
+}
+
+.not-started-section,
+.done-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.section__title {
+  font-size: 1.5rem;
+}
+
+.item__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 17rem;
+  padding: 1rem;
+
+  border-radius: 1rem;
+  background-color: white;
+
+  cursor: pointer;
+  animation: shrinkAndGrow 1.5s ease-in-out infinite;
+}
+
+.item__name {
+  width: 100%;
+  margin-right: 0.5rem;
+
+  background-color: white;
+
+  font-size: 1rem;
+  color: black;
+
+  /* 말줄임표 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.close-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  border-radius: 10rem;
+
+  background-color: #fbeaeb;
+  color: black;
+}
+
+/* 커졌다 작아졌다 애니메이션 */
+@keyframes shrinkAndGrow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
