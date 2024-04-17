@@ -79,7 +79,9 @@ navSectionBtns.forEach((btn) => {
 
 // 홈 버튼 클릭 연결
 const homeIcon = document.querySelector('.home_icon');
-homeIcon.addEventListener('click', changeUrl('/'));
+homeIcon.addEventListener('click', () => {
+  changeUrl('/');
+});
 
 // 햄버거 메뉴 열고 닫기
 const hamberToggleIcon = document.querySelector('.hamburger_icon');
@@ -100,4 +102,6 @@ modalCloseIcon.addEventListener('click', hideModal);
 
 // 햄버거 메뉴 장바구니 클릭 시 이동
 const cartMenu = document.querySelector('.cart-btn');
-cartMenu.addEventListener('click', changeUrl('/cart'));
+cartMenu.addEventListener('click', () => {
+  changeUrl('/cart');
+});
