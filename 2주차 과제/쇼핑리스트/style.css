@@ -28,6 +28,7 @@ a:active {
 /*부드러운 스크롤 효과*/
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* nav바 position 부모 지정 */
@@ -57,6 +58,10 @@ body {
   background-color: black;
 
   font-size: 2rem;
+}
+
+.header > i {
+  cursor: pointer;
 }
 
 /* nav 영역 */
@@ -285,6 +290,16 @@ body {
   background-color: rgb(244, 221, 225);
 
   z-index: 2;
+
+  transition: right 0.3s ease-in-out;
+}
+
+.hide-modal {
+  right: -20rem;
+}
+
+.show-modal {
+  right: 0;
 }
 
 .modal-section > i {

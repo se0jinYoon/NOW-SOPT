@@ -76,3 +76,20 @@ navSectionBtns.forEach((btn) => {
     filterItemList(category);
   });
 });
+
+// 햄버거 메뉴 열고 닫기
+const hamberToggleIcon = document.querySelector('.hamburger_icon');
+const modalCloseIcon = document.querySelector('.modal_close_icon');
+const modalSection = document.querySelector('.modal-section');
+const showModal = () => {
+  modalSection.classList.remove('hide-modal');
+  modalSection.classList.add('show-modal');
+};
+
+const hideModal = () => {
+  modalSection.classList.remove('show-modal');
+  modalSection.classList.add('hide-modal');
+};
+
+hamberToggleIcon.addEventListener('click', showModal);
+modalCloseIcon.addEventListener('click', hideModal);

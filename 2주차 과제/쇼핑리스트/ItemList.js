@@ -3,7 +3,7 @@ class ItemList {
     return `<header class="header">
     <i class="fa-solid fa-globe fa-2xl"></i>
     <h1 class="header__title">✨ 서진이의 위시리스트 ✨</h1>
-    <i class="fa-solid fa-bars fa-2xl"></i>
+    <i class="fa-solid fa-bars fa-2xl hamburger_icon"></i>
   </header>
 
   <nav class="nav-section">
@@ -40,8 +40,8 @@ class ItemList {
     </section>
   </main>
 
-  <nav class="modal-section">
-    <i class="fa-solid fa-xmark fa-xl"></i>
+  <nav class="modal-section hide-modal">
+    <i class="fa-solid fa-xmark fa-xl modal_close_icon"></i>
     <ul class="modal-list">
       <li>💗 관심 상품 목록</li>
       <li>👩🏻‍💻 관리자 페이지</li>
