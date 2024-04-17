@@ -1,5 +1,6 @@
 import { ITEM_LIST } from './js/utils/constants.js';
 import { priceFormatter } from './js/utils/priceFormatter.js';
+import { changeUrl } from './route.js';
 
 // 베너 색션 ITEM_LIST 값에 따른 li html
 const createBannerItem = (item) => {
@@ -30,11 +31,9 @@ const createItemList = (item) => {
 
 // 아이템 클릭 시 장바구니에 담기
 const addCartHandler = () => {
-  console.log('클릭됨');
   if (confirm('장바구니에 추가하시겠습니까?')) {
-    console.log('추가됨');
+    changeUrl('/cart');
   } else {
-    console.log('취소됨');
   }
 };
 
