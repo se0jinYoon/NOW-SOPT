@@ -1,6 +1,7 @@
 export const ITEM_LIST = [
   {
     id: 0,
+    sectionId: 'clothes-section',
     category: 'clothes',
     imgUrl: './assets/image/Clothes/clothes1.jpg',
     imgAlt: '옷_위시리스트_1',
@@ -10,6 +11,7 @@ export const ITEM_LIST = [
   {
     id: 1,
     category: 'clothes',
+    sectionId: 'clothes-section',
     imgUrl: './assets/image/Clothes/clothes2.jpg',
     imgAlt: '옷_위시리스트_2',
     name: '로로 썸머 니트',
@@ -18,6 +20,7 @@ export const ITEM_LIST = [
   {
     id: 2,
     category: 'clothes',
+    sectionId: 'clothes-section',
     imgUrl: './assets/image/Clothes/clothes3.jpg',
     imgAlt: '옷_위시리스트_3',
     name: '스트라이프 스커트',
@@ -26,6 +29,7 @@ export const ITEM_LIST = [
   {
     id: 3,
     category: 'clothes',
+    sectionId: 'clothes-section',
     imgUrl: './assets/image/Clothes/clothes4.jpg',
     imgAlt: '옷_위시리스트_4',
     name: '소피 코르셋 가디건',
@@ -34,6 +38,7 @@ export const ITEM_LIST = [
   {
     id: 4,
     category: 'clothes',
+    sectionId: 'clothes-section',
     imgUrl: './assets/image/Clothes/clothes5.jpg',
     imgAlt: '옷_위시리스트_5',
     name: '르무어 오버핏 썸머 자켓',
@@ -42,6 +47,7 @@ export const ITEM_LIST = [
   {
     id: 5,
     category: 'clothes',
+    sectionId: 'clothes-section',
     imgUrl: './assets/image/Clothes/clothes6.jpg',
     imgAlt: '옷_위시리스트_6',
     name: 'The Isabelli',
@@ -50,6 +56,7 @@ export const ITEM_LIST = [
   {
     id: 7,
     category: 'phonecase',
+    sectionId: 'phone-case-section',
     imgUrl: './assets/image/PhoneCase/phoneCase1.jpg',
     imgAlt: '폰케이스_위시리스트_1',
     name: '고양이 에폭시 케이스',
@@ -58,6 +65,7 @@ export const ITEM_LIST = [
   {
     id: 8,
     category: 'phonecase',
+    sectionId: 'phone-case-section',
     imgUrl: './assets/image/PhoneCase/phoneCase2.jpg',
     imgAlt: '폰케이스_위시리스트_2',
     name: '빛나는 레진 케이스',
@@ -66,6 +74,7 @@ export const ITEM_LIST = [
   {
     id: 9,
     category: 'phonecase',
+    sectionId: 'phone-case-section',
     imgUrl: './assets/image/PhoneCase/phoneCase3.jpg',
     imgAlt: '폰케이스_위시리스트_3',
     name: '딸기 케이스',
@@ -74,6 +83,7 @@ export const ITEM_LIST = [
   {
     id: 10,
     category: 'phonecase',
+    sectionId: 'phone-case-section',
     imgUrl: './assets/image/PhoneCase/phoneCase4.jpg',
     imgAlt: '폰케이스_위시리스트_4',
     name: '딸기우유 케이스',
@@ -82,6 +92,7 @@ export const ITEM_LIST = [
   {
     id: 11,
     category: 'accessory',
+    sectionId: 'accessory-section',
     imgUrl: './assets/image/Accessory/accessory1.jpg',
     imgAlt: '악세서리_위시리스트_1',
     name: 'Love Wins All',
@@ -90,6 +101,7 @@ export const ITEM_LIST = [
   {
     id: 12,
     category: 'accessory',
+    sectionId: 'accessory-section',
     imgUrl: './assets/image/Accessory/accessory2.jpg',
     imgAlt: '악세서리_위시리스트_2',
     name: '핑크 진주 목걸이',
