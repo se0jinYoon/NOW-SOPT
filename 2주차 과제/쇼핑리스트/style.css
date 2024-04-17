@@ -110,17 +110,16 @@ body {
   background-color: white;
 }
 
-.nav-section__items > li > a {
-  display: block;
-
+.nav-section__items > li > button {
   width: 100%;
 
   background-color: white;
+  cursor: pointer;
 }
 
 .nav-section__items > li:hover,
-.nav-section__items > li > a:hover {
-  color: #fcf6f5;
+.nav-section__items > li > button:hover {
+  color: black;
   background-color: pink;
 }
 
