@@ -266,6 +266,62 @@ body {
   color: pink;
 }
 
+/* 햄버거 모달 영역 */
+.modal-section {
+  position: absolute;
+  top: -112px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  gap: 3rem;
+
+  width: 20rem;
+  height: 100vh;
+
+  padding: 2rem 1.5rem;
+  background-color: rgb(244, 221, 225);
+
+  z-index: 2;
+}
+
+.modal-section > i {
+  background-color: rgb(244, 221, 225);
+
+  cursor: pointer;
+}
+
+.modal-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 1rem;
+  columns: white;
+
+  width: 100%;
+
+  font-size: 1.3rem;
+  background-color: rgb(244, 221, 225);
+}
+
+.modal-list > li {
+  width: 100%;
+
+  padding: 0.5rem;
+
+  background-color: rgb(244, 221, 225);
+  cursor: pointer;
+}
+
+.modal-list > li:hover {
+  background-color: white;
+  color: black;
+}
+
 /* footer 영역 */
 .footer {
   display: flex;

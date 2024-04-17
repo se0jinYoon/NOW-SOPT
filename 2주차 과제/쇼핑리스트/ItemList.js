@@ -40,13 +40,22 @@ class ItemList {
     </section>
   </main>
 
+  <nav class="modal-section">
+    <i class="fa-solid fa-xmark fa-xl"></i>
+    <ul class="modal-list">
+      <li>💗 관심 상품 목록</li>
+      <li>👩🏻‍💻 관리자 페이지</li>
+      <li>🛒 장바구니</li>
+    </ul>
+  </nav>
+  
   <footer class="footer">
     <p>✨ seojin's wish list ✨</p>
     <p class="footer__more">
       <span>💗 More Inspiration : </span>
       <a href="https://www.instagram.com/tjwls99/">@tjwls99</a>
     </p>
-  </footer>`
+  </footer>`;
   }
 }
 
