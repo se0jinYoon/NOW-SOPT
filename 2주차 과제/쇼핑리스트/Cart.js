@@ -104,3 +104,75 @@ const homeBtn = document.querySelector('.home__btn');
 homeBtn.addEventListener('click', () => {
   window.location.href = 'index.html';
 });
+
+// 구매 모달 html
+const createPurchaseModal = (buyList) => {
+  return `
+  <li class="purchase-item__wrapper">
+    <img src=${buyList.imgUrl} alt=${buyList.imgAlt} />
+    <span class="purchase-item__name">${buyList.name}</span>
+    <span class="purchase-item__price">${buyList.price}</span>
+</li>`;
+};
+
+// 구매 모달 동적 생성하기
+const displayPurchaseModal = (items) => {
+  const purchaseWrapper = document.querySelector('.purchase-modal__list');
+  purchaseWrapper.innerHTML = items.map((item) => createPurchaseModal(item));
+};
+
+// 구매 모달 열고 닫기
+const purchaseModal = document.querySelector('.purchase-modal__section');
+
+const showPurchaseModal = () => {
+  displayPurchaseModal(buyList);
+  priceFormatter('.purchase-item__price');
+  buyListTotalPrice(buyList);
+
+  purchaseModal.style.display = 'flex';
+};
+
+const closePurchaseModal = () => {
+  const checkBoxes = document.querySelectorAll('.cart-check');
+  purchaseModal.style.display = 'none';
+  // 체크표시 초기화
+  checkBoxes.forEach((checkbox) => (checkbox.checked = false));
+};
+
+// 구매하기 버튼 클릭 시 모달 뜨는 함수
+const purchaseModalShowBtn = document.querySelector('.purchase__btn');
+purchaseModalShowBtn.addEventListener('click', () => {
+  buyList.length === 0 ? alert('구매 상품을 확인해주세요!') : showPurchaseModal();
+});
+
+// 구매하기 모달 닫기 연결
+const purchaseModalCloseBtn = document.querySelector('.purchase-modal__close');
+purchaseModalCloseBtn.addEventListener('click', closePurchaseModal);
+
+// 전체 구매 금액
+const buyListTotalPrice = (buyList) => {
+  const totalPrice = document.querySelector('.total-price');
+  const totalPriceValue = buyList.reduce((total, item) => total + parseInt(item.price), 0);
+  totalPrice.innerHTML = `${totalPriceValue}원`;
+  priceFormatter('.total-price');
+};
+
+// 모달 구매하기 버튼 함수
+const purchaseItem = () => {
+  alert('구매 완료되었습니다.');
+
+  buyList.forEach((buyItem) => {
+    const index = cartList.findIndex((cartItem) => cartItem.id === buyItem.id);
+    if (index !== -1) {
+      cartList.splice(index, 1);
+    }
+  });
+
+  sessionStorage.setItem('cartList', JSON.stringify(cartList));
+  displayTableList(cartList);
+
+  closePurchaseModal();
+};
+
+const purchaseModalBtn = document.querySelector('.purchase-modal__btn');
+purchaseModalBtn.addEventListener('click', purchaseItem);

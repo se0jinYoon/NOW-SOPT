@@ -287,9 +287,9 @@ body {
 
 /* 구매하기 모달 */
 .purchase-modal__section {
+  display: none;
   position: absolute;
   top: 0;
-  display: flex;
   justify-content: center;
   align-items: center;
 
@@ -368,6 +368,10 @@ body {
 .total-price__p {
   font-size: 1.2rem;
 
+  background-color: white;
+}
+
+.total-price__p > span {
   background-color: white;
 }
 
