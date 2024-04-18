@@ -94,7 +94,7 @@ body {
 }
 
 .cart-list__th {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 
   text-align: center;
   width: 12rem;
@@ -151,4 +151,44 @@ body {
 .cart-list__remove-btn:hover {
   background-color: black;
   color: white;
+}
+
+/* 구매하기, 홈으로 버튼 */
+.button__wrapper {
+  margin-top: 7rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.purchase__btn,
+.home__btn {
+  width: 7rem;
+  padding: 1.1rem;
+
+  font-size: 1.1rem;
+  text-align: center;
+
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.purchase__btn {
+  background-color: #333d79;
+  color: white;
+}
+
+.purchase__btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.home__btn {
+  background-color: white;
+}
+.home__btn:hover {
+  background-color: #f4efea;
 }
