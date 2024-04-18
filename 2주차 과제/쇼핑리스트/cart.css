@@ -64,3 +64,91 @@ body {
 .header > i {
   cursor: pointer;
 }
+
+/* main */
+.cart__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  margin-top: 8rem;
+}
+
+/* 장바구니 리스트 */
+.cart-list__section {
+  max-height: 20rem;
+  margin-top: 5rem;
+
+  overflow-y: scroll;
+  display: flex;
+  align-items: center;
+  width: 70%;
+}
+
+/* 테이블 제목 */
+.cart-list__title {
+  background-color: rgb(244, 221, 225);
+  color: black;
+  font-size: 1.3rem;
+}
+
+.cart-list__th {
+  font-size: 1.5rem;
+
+  text-align: center;
+  width: 12rem;
+  padding: 1.3rem;
+
+  background-color: rgb(244, 221, 225);
+  color: black;
+
+  border: 2px solid gray;
+}
+
+.cart-list__th:first-child {
+  width: 3rem;
+}
+.cart-list__th:nth-child(2) {
+  width: 25rem;
+}
+
+/* 테이블 내용 */
+.cart-list__tr {
+  justify-content: center;
+}
+
+.cart-list__td {
+  padding: 1.3rem;
+  text-align: center;
+
+  border: 2px solid gray;
+
+  background-color: rgb(244, 221, 225);
+  color: black;
+}
+
+.cart-list__img-wrapper {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+}
+
+.cart-list__remove-btn {
+  width: 5rem;
+  padding: 0.5rem;
+
+  border: none;
+  border-radius: 0.5rem;
+
+  font-size: 1rem;
+  background-color: white;
+  color: black;
+
+  cursor: pointer;
+}
+
+.cart-list__remove-btn:hover {
+  background-color: black;
+  color: white;
+}
