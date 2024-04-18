@@ -172,7 +172,7 @@ body {
 
 /* 구매하기, 홈으로 버튼 */
 .button__wrapper {
-  margin-top: 4.5rem;
+  margin-top: 3rem;
 
   display: flex;
   justify-content: center;
@@ -183,7 +183,7 @@ body {
 .purchase__btn,
 .home__btn {
   width: 7rem;
-  padding: 1.1rem;
+  padding: 0.8rem;
 
   font-size: 1.1rem;
   text-align: center;
