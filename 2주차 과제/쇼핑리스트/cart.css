@@ -78,19 +78,33 @@ body {
 /* 장바구니 리스트 */
 .cart-list__section {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
-  max-height: 30rem;
   width: 70%;
+  max-height: 30rem;
+  border: 1px solid gray;
+  border-collapse: collapse;
+
+  table-layout: fixed;
 
   margin-top: 1.3rem;
   overflow-y: auto;
 }
 
 .cart-list__table {
-  display: block;
+  width: 100%;
   border-collapse: collapse;
-  /* max-height: 30rem; */
+  max-height: 30rem;
+  overflow: auto;
+}
+
+.cart-list__tr {
+  /* display: table; */
+  table-layout: fixed;
+  text-align: center;
+  width: 100%;
 }
 
 /* 테이블 제목 */
@@ -101,13 +115,14 @@ body {
   background-color: beige;
   color: black;
   font-size: 1.3rem;
+  table-layout: fixed;
+  border: 2px solid gray;
 }
 
 .cart-list__th {
   font-size: 1.3rem;
 
   text-align: center;
-  width: 12rem;
   padding: 1.3rem;
 
   background-color: beige;
@@ -125,12 +140,10 @@ body {
 
 /* 테이블 내용 */
 .cart-list__body {
-  overflow-y: scroll;
+  /* display: block; */
+  overflow-y: auto;
   max-height: 30rem;
-}
-
-.cart-list__tr {
-  text-align: center;
+  width: 100%;
 }
 
 .cart-list__td {
