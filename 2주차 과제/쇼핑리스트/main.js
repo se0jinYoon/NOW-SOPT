@@ -19,7 +19,7 @@ const displayBannerList = (items) => {
 // 초기 렌더링 시 ITEM_LIST 값에 따른 li html
 const createItemList = (item) => {
   return `
-    <li class="item-container">
+    <li class="item-container" data-id=${item.id}>
       <img src=${item.imgUrl} alt=${item.imgAlt}/>
       <i class="fa-solid fa-heart like-icon"></i>
       <p class="item-name">${item.name}</p>
@@ -28,11 +28,26 @@ const createItemList = (item) => {
     `;
 };
 
+// session storage 값 가져오기
+const cartList = sessionStorage.getItem('cartList') ? JSON.parse(sessionStorage.getItem('cartList')) : [];
+
+console.log(cartList);
+
 // 아이템 클릭 시 장바구니에 담기
-const addCartHandler = () => {
-  if (confirm('장바구니에 추가하시겠습니까?')) {
-    window.location.href = 'cart.html';
+const addCartHandler = (addedItem) => {
+  const clickedItem = ITEM_LIST.find((item) => item.id.toString() === addedItem.dataset.id);
+  let existInCart = cartList.some((cartItem) => cartItem.id === clickedItem.id);
+
+  if (existInCart) {
+    alert('이미 추가한 상품입니다.');
+    return;
   }
+
+  if (!confirm('장바구니에 추가하시겠습니까?')) return;
+
+  cartList.push(clickedItem);
+  sessionStorage.setItem('cartList', JSON.stringify(cartList));
+  window.location.href = 'cart.html';
 };
 
 // 전체 섹션 li html 동적생성
@@ -43,8 +58,8 @@ const displayItemList = (items) => {
   // 장바구니 추가하기 연결
   const itemContainers = document.querySelectorAll('.item-container');
   itemContainers.forEach((itemContainer) =>
-    itemContainer.addEventListener('click', () => {
-      addCartHandler();
+    itemContainer.addEventListener('click', (event) => {
+      addCartHandler(itemContainer);
     })
   );
 };
@@ -89,5 +104,5 @@ const hideModal = () => {
   modalSection.classList.add('hide-modal');
 };
 
-hamberToggleIcon.addEventListener('click',  showModal);
+hamberToggleIcon.addEventListener('click', showModal);
 modalCloseIcon.addEventListener('click', hideModal);
