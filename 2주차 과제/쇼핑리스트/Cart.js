@@ -40,14 +40,18 @@ const removeItem = (event) => {
 const selectAllCartItem = (event) => {
   const selectAll = event.target;
   const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+  buyList = [];
 
-  let buyList = [];
-
-  checkBoxes.forEach((checkBox) => {
-    checkBox.checked = selectAll.checked;
-  });
-
-  selectAll.checked ? (buyList = cartList) : (buyList = []);
+  if (selectAll.checked) {
+    checkBoxes.forEach((checkBox) => {
+      checkBox.checked = true;
+    });
+    cartList.map((cartItem) => buyList.push(cartItem));
+  } else {
+    checkBoxes.forEach((checkBox) => {
+      checkBox.checked = false;
+    });
+  }
 };
 
 // 체크 된 아이템 구매 리스트에 추가하기 함수
@@ -134,9 +138,11 @@ const showPurchaseModal = () => {
 
 const closePurchaseModal = () => {
   const checkBoxes = document.querySelectorAll('.cart-check');
+  const selectAll = document.querySelector('.checkbox_all');
   purchaseModal.style.display = 'none';
   // 체크표시 초기화
   checkBoxes.forEach((checkbox) => (checkbox.checked = false));
+  selectAll.checked = false;
 };
 
 // 구매하기 버튼 클릭 시 모달 뜨는 함수
