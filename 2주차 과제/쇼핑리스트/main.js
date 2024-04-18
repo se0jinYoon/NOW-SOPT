@@ -1,6 +1,5 @@
 import { ITEM_LIST } from './js/utils/constants.js';
 import { priceFormatter } from './js/utils/priceFormatter.js';
-import { changeUrl } from './route.js';
 
 // 베너 색션 ITEM_LIST 값에 따른 li html
 const createBannerItem = (item) => {
@@ -32,8 +31,7 @@ const createItemList = (item) => {
 // 아이템 클릭 시 장바구니에 담기
 const addCartHandler = () => {
   if (confirm('장바구니에 추가하시겠습니까?')) {
-    changeUrl('/cart');
-  } else {
+    window.location.href = 'cart.html';
   }
 };
 
@@ -77,12 +75,6 @@ navSectionBtns.forEach((btn) => {
   });
 });
 
-// 홈 버튼 클릭 연결
-const homeIcon = document.querySelector('.home_icon');
-homeIcon.addEventListener('click', () => {
-  changeUrl('/');
-});
-
 // 햄버거 메뉴 열고 닫기
 const hamberToggleIcon = document.querySelector('.hamburger_icon');
 const modalCloseIcon = document.querySelector('.modal_close_icon');
@@ -97,11 +89,5 @@ const hideModal = () => {
   modalSection.classList.add('hide-modal');
 };
 
-hamberToggleIcon.addEventListener('click', showModal);
+hamberToggleIcon.addEventListener('click',  showModal);
 modalCloseIcon.addEventListener('click', hideModal);
-
-// 햄버거 메뉴 장바구니 클릭 시 이동
-const cartMenu = document.querySelector('.cart-btn');
-cartMenu.addEventListener('click', () => {
-  changeUrl('/cart');
-});

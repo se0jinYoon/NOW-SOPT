@@ -273,8 +273,8 @@ body {
 
 /* 햄버거 모달 영역 */
 .modal-section {
-  position: absolute;
-  top: -112px;
+  position: fixed;
+  top: 0;
   right: 0;
   display: flex;
   flex-direction: column;
@@ -330,6 +330,15 @@ body {
 
   background-color: rgb(244, 221, 225);
   cursor: pointer;
+}
+
+.modal-list > li > a {
+  background-color: rgb(244, 221, 225);
+}
+
+.modal-list > li > a:hover {
+  background-color: white;
+  color: black;
 }
 
 .modal-list > li:hover {
