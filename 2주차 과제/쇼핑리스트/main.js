@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // session storage 값 가져오기
 const CART_LIST = sessionStorage.getItem('cartList') ? JSON.parse(sessionStorage.getItem('cartList')) : [];
+console.log(CART_LIST);
 
 // 아이템 클릭 시 장바구니에 담기
 const addCartHandler = (addedItem) => {

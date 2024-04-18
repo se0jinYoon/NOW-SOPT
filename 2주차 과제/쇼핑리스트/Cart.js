@@ -1,9 +1,9 @@
 import { priceFormatter } from './js/utils/priceFormatter.js';
 
 // session storage 값 가져오기
-const CART_LIST = sessionStorage.getItem('cartList') ? JSON.parse(sessionStorage.getItem('cartList')) : [];
+let cartList = sessionStorage.getItem('cartList') ? JSON.parse(sessionStorage.getItem('cartList')) : [];
 
-console.log(CART_LIST);
+console.log(cartList);
 
 // 장바구니 table html
 const createCartTableItem = (cartItem) => {
@@ -19,21 +19,36 @@ const createCartTableItem = (cartItem) => {
       <td class="cart-list__td cart-list__item-price">${cartItem.price}</td>
       <td class="cart-list__td">${cartItem.category}</td>
       <td class="cart-list__td">
-        <button class="cart-list__remove-btn" type="button">삭제</button>
+        <button id=${cartItem.id} class="cart-list__remove-btn" type="button">삭제</button>
       </td>
     </tr>
   `;
+};
+
+// 장바구니에서 삭제하기 함수
+const removeItem = (event) => {
+  const removeItemId = event.target.id;
+
+  const filteredCartList = cartList.filter((cartItem) => cartItem.id.toString() !== removeItemId);
+  sessionStorage.setItem('cartList', JSON.stringify(filteredCartList));
+  cartList = filteredCartList;
+
+  displayTableList(filteredCartList);
 };
 
 // 장바구니 테이블 리스트 동적 생성
 const displayTableList = (items) => {
   const cartTableContent = document.querySelector('.cart-list__body');
   cartTableContent.innerHTML = items.map((item) => createCartTableItem(item)).join('');
+
+  // 삭제하기 연결
+  const cartListRemoveBtns = document.querySelectorAll('.cart-list__remove-btn');
+  cartListRemoveBtns.forEach((removeBtn) => removeBtn.addEventListener('click', removeItem));
 };
 
 // 최초 렌더링
 document.addEventListener('DOMContentLoaded', () => {
-  displayTableList(CART_LIST);
+  displayTableList(cartList);
   priceFormatter('.cart-list__item-price');
 });
 
@@ -53,3 +68,5 @@ const hideModal = () => {
 
 hamberToggleIcon.addEventListener('click', showModal);
 modalCloseIcon.addEventListener('click', hideModal);
+
+// 장바구니 삭제 버튼
