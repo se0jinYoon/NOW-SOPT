@@ -29,41 +29,7 @@
             <th class="cart-list__th">카테고리</th>
             <th class="cart-list__th">비고</th>
           </thead>
-          <tbody class="cart-list__body">
-            <!-- 첫번째 줄 -->
-            <tr class="cart-list__tr">
-              <td class="cart-list__td">
-                <input type="checkbox" class="cart-check" />
-              </td>
-              <td class="cart-list__td">
-                <div class="cart-list__img-wrapper">
-                  <img src="${cartItem.imgUrl}" alt="${cartItem.imgAlt}" />
-                </div>
-              </td>
-              <td class="cart-list__td">이름</td>
-              <td class="cart-list__td">가격</td>
-              <td class="cart-list__td">카테고리</td>
-              <td class="cart-list__td">
-                <button class="cart-list__remove-btn" type="button">삭제</button>
-              </td>
-            </tr>
-            <tr class="cart-list__tr">
-              <td class="cart-list__td">
-                <input type="checkbox" class="cart-check" />
-              </td>
-              <td class="cart-list__td">
-                <div class="cart-list__img-wrapper">
-                  <img src="${cartItem.imgUrl}" alt="${cartItem.imgAlt}" />
-                </div>
-              </td>
-              <td class="cart-list__td">이름</td>
-              <td class="cart-list__td">가격</td>
-              <td class="cart-list__td">카테고리</td>
-              <td class="cart-list__td">
-                <button class="cart-list__remove-btn" type="button">삭제</button>
-              </td>
-            </tr>
-          </tbody>
+          <tbody class="cart-list__body"></tbody>
         </table>
       </section>
 
@@ -73,6 +39,15 @@
         <button class="home__btn" type="button">홈으로</button>
       </section>
     </main>
+
+    <nav class="modal-section hide-modal">
+      <i class="fa-solid fa-xmark fa-xl modal_close_icon"></i>
+      <ul class="modal-list">
+        <li>💗 관심 상품 목록</li>
+        <li>👩🏻‍💻 관리자 페이지</li>
+        <li class="cart-btn"><a href="./cart.html">🛒 장바구니</a></li>
+      </ul>
+    </nav>
   </body>
 
   <script src="cart.js" type="module"></script>

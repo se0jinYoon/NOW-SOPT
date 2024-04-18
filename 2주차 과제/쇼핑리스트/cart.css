@@ -77,18 +77,28 @@ body {
 
 /* 장바구니 리스트 */
 .cart-list__section {
-  max-height: 20rem;
-  margin-top: 5rem;
-
-  overflow-y: scroll;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+
+  max-height: 30rem;
   width: 70%;
+
+  margin-top: 1.3rem;
+  overflow-y: auto;
+}
+
+.cart-list__table {
+  display: block;
+  border-collapse: collapse;
+  /* max-height: 30rem; */
 }
 
 /* 테이블 제목 */
 .cart-list__title {
-  background-color: rgb(244, 221, 225);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: beige;
   color: black;
   font-size: 1.3rem;
 }
@@ -100,7 +110,7 @@ body {
   width: 12rem;
   padding: 1.3rem;
 
-  background-color: rgb(244, 221, 225);
+  background-color: beige;
   color: black;
 
   border: 2px solid gray;
@@ -114,24 +124,41 @@ body {
 }
 
 /* 테이블 내용 */
+.cart-list__body {
+  overflow-y: scroll;
+  max-height: 30rem;
+}
+
 .cart-list__tr {
-  justify-content: center;
+  text-align: center;
 }
 
 .cart-list__td {
   padding: 1.3rem;
+  height: 3rem;
   text-align: center;
+  line-height: 3rem;
 
   border: 2px solid gray;
 
-  background-color: rgb(244, 221, 225);
+  background-color: beige;
   color: black;
 }
 
 .cart-list__img-wrapper {
-  width: 2.5rem;
-  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 4rem;
+  height: 4rem;
   object-fit: cover;
+}
+
+.cart-list__td > img {
+  text-align: center;
+  width: 4rem;
+  height: 4rem;
 }
 
 .cart-list__remove-btn {
@@ -155,7 +182,7 @@ body {
 
 /* 구매하기, 홈으로 버튼 */
 .button__wrapper {
-  margin-top: 7rem;
+  margin-top: 4.5rem;
 
   display: flex;
   justify-content: center;
@@ -191,4 +218,79 @@ body {
 }
 .home__btn:hover {
   background-color: #f4efea;
+}
+
+/* 햄버거 모달 영역 */
+.modal-section {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  gap: 3rem;
+
+  width: 20rem;
+  height: 100vh;
+
+  padding: 2rem 1.5rem;
+  background-color: rgb(244, 221, 225);
+
+  z-index: 2;
+
+  transition: right 0.3s ease-in-out;
+}
+
+.hide-modal {
+  right: -20rem;
+}
+
+.show-modal {
+  right: 0;
+}
+
+.modal-section > i {
+  background-color: rgb(244, 221, 225);
+
+  cursor: pointer;
+}
+
+.modal-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 1rem;
+  columns: white;
+
+  width: 100%;
+
+  font-size: 1.3rem;
+  background-color: rgb(244, 221, 225);
+}
+
+.modal-list > li {
+  width: 100%;
+
+  padding: 0.5rem;
+
+  background-color: rgb(244, 221, 225);
+  cursor: pointer;
+}
+
+.modal-list > li > a {
+  background-color: rgb(244, 221, 225);
+}
+
+.modal-list > li > a:hover {
+  background-color: white;
+  color: black;
+}
+
+.modal-list > li:hover {
+  background-color: white;
+  color: black;
 }

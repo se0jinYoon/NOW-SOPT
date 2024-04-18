@@ -28,28 +28,6 @@ const createItemList = (item) => {
     `;
 };
 
-// session storage 값 가져오기
-const cartList = sessionStorage.getItem('cartList') ? JSON.parse(sessionStorage.getItem('cartList')) : [];
-
-console.log(cartList);
-
-// 아이템 클릭 시 장바구니에 담기
-const addCartHandler = (addedItem) => {
-  const clickedItem = ITEM_LIST.find((item) => item.id.toString() === addedItem.dataset.id);
-  let existInCart = cartList.some((cartItem) => cartItem.id === clickedItem.id);
-
-  if (existInCart) {
-    alert('이미 추가한 상품입니다.');
-    return;
-  }
-
-  if (!confirm('장바구니에 추가하시겠습니까?')) return;
-
-  cartList.push(clickedItem);
-  sessionStorage.setItem('cartList', JSON.stringify(cartList));
-  window.location.href = 'cart.html';
-};
-
 // 전체 섹션 li html 동적생성
 const displayItemList = (items) => {
   const itemSectionWrapper = document.querySelector('.item-section__container');
@@ -68,8 +46,28 @@ const displayItemList = (items) => {
 document.addEventListener('DOMContentLoaded', () => {
   displayBannerList(ITEM_LIST);
   displayItemList(ITEM_LIST);
-  priceFormatter();
+  priceFormatter('.item-price');
 });
+
+// session storage 값 가져오기
+const CART_LIST = sessionStorage.getItem('cartList') ? JSON.parse(sessionStorage.getItem('cartList')) : [];
+
+// 아이템 클릭 시 장바구니에 담기
+const addCartHandler = (addedItem) => {
+  const clickedItem = ITEM_LIST.find((item) => item.id.toString() === addedItem.dataset.id);
+  let existInCart = CART_LIST.some((cartItem) => cartItem.id === clickedItem.id);
+
+  if (existInCart) {
+    alert('이미 추가한 상품입니다.');
+    return;
+  }
+
+  if (!confirm('장바구니에 추가하시겠습니까?')) return;
+
+  CART_LIST.push(clickedItem);
+  sessionStorage.setItem('cartList', JSON.stringify(CART_LIST));
+  window.location.href = 'cart.html';
+};
 
 // nav바 필터링
 const navSectionBtns = document.querySelectorAll('.nav-section__button');
