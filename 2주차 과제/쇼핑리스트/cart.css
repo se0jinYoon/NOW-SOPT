@@ -301,7 +301,7 @@ body {
 /* 구매하기 모달 */
 .purchase-modal__section {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   justify-content: center;
   align-items: center;
