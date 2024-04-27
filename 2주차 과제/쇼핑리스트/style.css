@@ -16,7 +16,6 @@ a {
   color: inherit;
   text-decoration: none;
   outline: none;
-  background: none;
 }
 
 a:hover,
@@ -274,8 +273,8 @@ body {
 
 /* 햄버거 모달 영역 */
 .modal-section {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: -112px;
   right: 0;
   display: flex;
   flex-direction: column;
@@ -331,15 +330,6 @@ body {
 
   background-color: rgb(244, 221, 225);
   cursor: pointer;
-}
-
-.modal-list > li > a {
-  background-color: rgb(244, 221, 225);
-}
-
-.modal-list > li > a:hover {
-  background-color: white;
-  color: black;
 }
 
 .modal-list > li:hover {
