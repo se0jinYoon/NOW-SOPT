@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import GAME_DATA from '../../assets';
 
 const GameMain = () => {
+  // 게임 레벨
+  const [gameLevel, setGameLevel] = useState(5);
   // 렌더링할 랜덤 추출 배열
   const [shuffledCardItems, setShuffledCardItems] = useState([]);
 
@@ -25,15 +27,22 @@ const GameMain = () => {
 
   // 게임 레벨 함수
   const onClickGameLevel = (num) => {
+    setGameLevel(num);
     setShuffledCardItems(getRandomDuplicatedItems(GAME_DATA, num));
   };
 
   return (
     <GameMainWrapper>
       <GameLevelWrapper>
-        <GameLevelBtn onClick={() => onClickGameLevel(5)}>EASY</GameLevelBtn>
-        <GameLevelBtn onClick={() => onClickGameLevel(7)}>NORMAL</GameLevelBtn>
-        <GameLevelBtn onClick={() => onClickGameLevel(9)}>HARD</GameLevelBtn>
+        <GameLevelBtn onClick={() => onClickGameLevel(5)} $selected={gameLevel === 5}>
+          EASY
+        </GameLevelBtn>
+        <GameLevelBtn onClick={() => onClickGameLevel(7)} $selected={gameLevel === 7}>
+          NORMAL
+        </GameLevelBtn>
+        <GameLevelBtn onClick={() => onClickGameLevel(9)} $selected={gameLevel === 9}>
+          HARD
+        </GameLevelBtn>
       </GameLevelWrapper>
       <CardItemWrapper>
         {shuffledCardItems.map((item, idx) => (
@@ -53,7 +62,7 @@ const GameMainWrapper = styled.main`
   align-items: center;
   gap: 3rem;
 
-  width: 80%;
+  width: 90%;
 `;
 
 const GameLevelWrapper = styled.section`
@@ -66,10 +75,10 @@ const GameLevelWrapper = styled.section`
 const GameLevelBtn = styled.button`
   padding: 0.4rem 0.8rem;
 
-  border: 4px double ${({ theme }) => theme.colors.black};
+  border: 4px double ${({ theme, $selected }) => ($selected ? theme.colors.gray : theme.colors.black)};
 
-  background-color: ${({ theme }) => theme.colors.gray};
-  color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme, $selected }) => ($selected ? theme.colors.blue : theme.colors.gray)};
+  color: ${({ theme, $selected }) => ($selected ? theme.colors.white : theme.colors.black)};
 
   font-size: 1.4rem;
   cursor: pointer;
@@ -90,4 +99,6 @@ const CardItem = styled.img`
 
   object-fit: cover;
   border: 4px double ${({ theme }) => theme.colors.black};
+
+  cursor: pointer;
 `;

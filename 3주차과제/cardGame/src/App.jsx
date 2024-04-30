@@ -15,7 +15,7 @@ function App() {
         <Header />
         <Spacing marginBottom="11" />
         <GameMain />
-        <Spacing marginBottom="5" />
+        <Spacing marginBottom="4" />
       </Wrapper>
     </ThemeProvider>
   );

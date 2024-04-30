@@ -13,7 +13,7 @@ const Header = () => {
 export default Header;
 
 const HeaderWrapper = styled.header`
-  position: absolute;
+  position: fixed;
   top: 0;
 
   display: flex;
