@@ -11,6 +11,7 @@ function App() {
         <Header>
           <HeaderTitle>웨비를 찾아라</HeaderTitle>
           <Score>3 / 5</Score>
+          <ResetBtn>RESET</ResetBtn>
         </Header>
       </Wrapper>
     </ThemeProvider>
@@ -33,6 +34,7 @@ const Wrapper = styled.div`
   color: ${({ theme }) => theme.colors.black};
 `;
 
+// header
 const Header = styled.header`
   position: absolute;
   top: 0;
@@ -57,4 +59,21 @@ const HeaderTitle = styled.h1`
 const Score = styled.span`
   color: ${({ theme }) => theme.colors.white};
   font-size: 2.3rem;
+`;
+
+const ResetBtn = styled.button`
+  position: absolute;
+  top: 1.3rem;
+  right: 1.3rem;
+
+  text-align: center;
+
+  padding: 0.1rem 0.2rem;
+  border: 4px double ${({ theme }) => theme.colors.black};
+
+  background-color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.black};
+
+  font-size: 1.8rem;
+  cursor: pointer;
 `;
