@@ -8,7 +8,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Wrapper>
-        <Header>웨비를 찾아라</Header>
+        <Header>
+          <HeaderTitle>웨비를 찾아라</HeaderTitle>
+          <Score>3 / 5</Score>
+        </Header>
       </Wrapper>
     </ThemeProvider>
   );
@@ -23,7 +26,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 
   background-color: ${({ theme }) => theme.colors.gray};
@@ -35,13 +38,23 @@ const Header = styled.header`
   top: 0;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.8rem;
 
   width: 100%;
-  padding: 1rem;
+  padding: 1.3rem 0;
 
   background-color: ${({ theme }) => theme.colors.blue};
+`;
+
+const HeaderTitle = styled.h1`
   color: ${({ theme }) => theme.colors.white};
   font-size: 2.5rem;
+`;
+
+const Score = styled.span`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 2.3rem;
 `;

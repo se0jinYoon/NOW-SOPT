@@ -1,7 +1,9 @@
-// GlobalStyle.js
 import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 export const GlobalStyle = createGlobalStyle`
+${reset}
+
 @font-face {
      font-family: 'DungGeunMo';
      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
@@ -15,6 +17,9 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
+    width: 100%;
+    height: 100vh;
+
     background-color: ${({ theme }) => theme.colors.lightGreen};
     font-family: 'DungGeunMo';
     font-size: 62.5%;
