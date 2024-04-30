@@ -7,16 +7,41 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Test>안녕</Test>
+      <Wrapper>
+        <Header>웨비를 찾아라</Header>
+      </Wrapper>
     </ThemeProvider>
   );
 }
 
 export default App;
 
-const Test = styled.div`
-  width: 100%;
-  height: 100%;
+const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
   background-color: ${({ theme }) => theme.colors.gray};
   color: ${({ theme }) => theme.colors.black};
+`;
+
+const Header = styled.header`
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  padding: 1rem;
+
+  background-color: ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 2.5rem;
 `;

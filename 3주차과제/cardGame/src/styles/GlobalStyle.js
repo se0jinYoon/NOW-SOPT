@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 body {
     background-color: ${({ theme }) => theme.colors.lightGreen};
     font-family: 'DungGeunMo';
+    font-size: 62.5%;
 }
 
 button {

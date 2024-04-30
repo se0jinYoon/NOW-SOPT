@@ -1,15 +1,15 @@
 // theme.js
 const colors = {
-  white: '#FFFFF0',
+  white: '#FFFFFF',
   blue: '#081ea3',
   gray: '#bababa',
   black: '#1b1b1b',
   darkGray: '#8b8585',
-  
+
 };
 
 const font = {
-  fontFamily: 'DungGeunMo',
+  fontFamily: 'DungGeunMo', 
 };
 
 const theme = {
