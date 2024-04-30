@@ -30,6 +30,7 @@ const GameMain = () => {
   // 게임 레벨 함수
   const onClickGameLevel = (num) => {
     setGameLevel(num);
+    setIsFlipped(false);
     setShuffledCardItems(getRandomDuplicatedItems(GAME_DATA, num));
   };
 
@@ -72,7 +73,7 @@ const GameMainWrapper = styled.main`
   align-items: center;
   gap: 3rem;
 
-  width: 90%;
+  width: 95%;
 `;
 
 const GameLevelWrapper = styled.section`

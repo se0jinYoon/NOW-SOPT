@@ -26,6 +26,8 @@ const HeaderWrapper = styled.header`
   padding: 1.3rem 0;
 
   background-color: ${({ theme }) => theme.colors.blue};
+
+  z-index: 1;
 `;
 
 const HeaderTitle = styled.h1`
