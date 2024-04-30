@@ -7,6 +7,8 @@ const GameMain = () => {
   const [gameLevel, setGameLevel] = useState(5);
   // 렌더링할 랜덤 추출 배열
   const [shuffledCardItems, setShuffledCardItems] = useState([]);
+  // 카드 뒤집혔는지
+  const [isFlipped, setIsFlipped] = useState(false);
 
   // 게임 레벨에 맞게 카드 랜덤 추출
   function getRandomDuplicatedItems(arr, num) {
@@ -31,6 +33,11 @@ const GameMain = () => {
     setShuffledCardItems(getRandomDuplicatedItems(GAME_DATA, num));
   };
 
+  // 카드 클릭 함수
+  const onClickCardItem = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   return (
     <GameMainWrapper>
       <GameLevelWrapper>
@@ -46,7 +53,10 @@ const GameMain = () => {
       </GameLevelWrapper>
       <CardItemWrapper>
         {shuffledCardItems.map((item, idx) => (
-          <CardItem key={item.name + idx.toString()} src={item.src} alt={item.name} />
+          <CardItem key={item.name + idx.toString()} onClick={onClickCardItem} className={isFlipped ? 'flipped' : ''}>
+            <CardItemFront src={item.src} alt={item.name} className={isFlipped ? 'flipped' : ''} />
+            <CardItemBack />
+          </CardItem>
         ))}
       </CardItemWrapper>
     </GameMainWrapper>
@@ -90,15 +100,47 @@ const CardItemWrapper = styled.section`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 1rem;
 `;
 
-const CardItem = styled.img`
+const CardItem = styled.div`
+  position: relative;
+
   width: 13rem;
   height: 15rem;
+
+  transition: 1s ease-in-out;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transform: rotateY(${({ className }) => (className === 'flipped' ? '180deg' : '0deg')});
+`;
+
+const CardItemFront = styled.img`
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
 
   object-fit: cover;
   border: 4px double ${({ theme }) => theme.colors.black};
 
   cursor: pointer;
+
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+`;
+
+const CardItemBack = styled.div`
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  border: 4px double ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.gray};
+
+  cursor: pointer;
+
+  backface-visibility: hidden;
+  transform: rotateY(${({ className }) => (className === 'flipped' ? '180deg' : '')});
 `;
