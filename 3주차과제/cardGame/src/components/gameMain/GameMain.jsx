@@ -111,16 +111,17 @@ const GameLevelBtn = styled.button`
   color: ${({ theme, $selected }) => ($selected ? theme.colors.white : theme.colors.black)};
 
   font-size: 1.4rem;
+
   cursor: pointer;
 `;
 
 const CardItemWrapper = styled.section`
-  width: 100%;
-
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+
+  width: 100%;
 `;
 
 const CardItem = styled.div`

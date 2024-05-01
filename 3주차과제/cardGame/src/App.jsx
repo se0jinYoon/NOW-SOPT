@@ -46,6 +46,7 @@ function App() {
     setIsFlipped(Array(shuffledCardItems.length).fill(false));
   }, [shuffledCardItems]);
 
+  // 게임 리셋 함수
   const resetGame = () => {
     setShuffledCardItems(getRandomDuplicatedItems(gameLevel));
     setIsFlipped(Array(shuffledCardItems.length).fill(false));
