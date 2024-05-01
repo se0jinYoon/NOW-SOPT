@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+import useClickOutside from '../../hooks/useClickOutside';
 
 const Modal = ({ gameLevel, matchedCards, resetGame }) => {
+  const modalRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -14,9 +17,15 @@ const Modal = ({ gameLevel, matchedCards, resetGame }) => {
     resetGame(gameLevel);
   };
 
+  const onClickModalOutside = () => {
+    showModal && onClickModalClose();
+  };
+
+  useClickOutside(modalRef, onClickModalOutside);
+
   return (
     <ModalBackground $showModal={showModal}>
-      <ModalWrapper>
+      <ModalWrapper ref={modalRef}>
         <ModalHeader>
           <ModalCloseBtn onClick={onClickModalClose}>X</ModalCloseBtn>
         </ModalHeader>

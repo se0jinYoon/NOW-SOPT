@@ -18,7 +18,6 @@ const GameMain = ({
     setGameLevel(num);
     resetGame(num);
   };
-  console.log(shuffledCardItems)
 
   // 카드 클릭 함수
   const onClickCardItem = (item, index) => {

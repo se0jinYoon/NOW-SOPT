@@ -49,7 +49,6 @@ function App() {
   // 게임 리셋 함수
   const resetGame = (gameLevel) => {
     setShuffledCardItems(getRandomDuplicatedItems(gameLevel));
-    console.log(shuffledCardItems)
     setIsFlipped(Array(shuffledCardItems.length).fill(false));
     setSelectedCards([]);
     setMatchedCards([]);
