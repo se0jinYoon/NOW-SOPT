@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 
 import Header from './components/header/Header';
 import GameMain from './components/gameMain/GameMain';
+import Modal from './components/modal/Modal';
 import Spacing from './components/common/Spacing';
 
 import GAME_DATA from './assets';
@@ -49,6 +50,15 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Wrapper>
+        <Modal
+          gameLevel={gameLevel}
+          matchedCards={matchedCards}
+          setIsFlipped={setIsFlipped}
+          setSelectedCards={setSelectedCards}
+          setMatchedCards={setMatchedCards}
+          getRandomDuplicatedItems={getRandomDuplicatedItems}
+          setShuffledCardItems={setShuffledCardItems}
+        />
         <Header
           shuffledCardItems={shuffledCardItems}
           setShuffledCardItems={setShuffledCardItems}
