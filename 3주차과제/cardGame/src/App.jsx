@@ -18,7 +18,10 @@ function App() {
   const [shuffledCardItems, setShuffledCardItems] = useState([]);
   // 카드 뒤집혔는지
   const [isFlipped, setIsFlipped] = useState(Array(shuffledCardItems.length).fill(false));
-  // console.log(isFlipped);
+  // 현재 선택된 카드 배열
+  const [selectedCards, setSelectedCards] = useState([]);
+  // 정답 된 카드 확인
+  const [matchedCards, setMatchedCards] = useState([]);
 
   // 게임 레벨에 맞게 카드 랜덤 추출
   function getRandomDuplicatedItems(num) {
@@ -52,6 +55,9 @@ function App() {
           setIsFlipped={setIsFlipped}
           getRandomDuplicatedItems={getRandomDuplicatedItems}
           gameLevel={gameLevel}
+          setSelectedCards={setSelectedCards}
+          setMatchedCards={setMatchedCards}
+          matchedCards={matchedCards}
         />
         <Spacing marginBottom="11" />
         <GameMain
@@ -62,6 +68,10 @@ function App() {
           getRandomDuplicatedItems={getRandomDuplicatedItems}
           gameLevel={gameLevel}
           setGameLevel={setGameLevel}
+          selectedCards={selectedCards}
+          setSelectedCards={setSelectedCards}
+          matchedCards={matchedCards}
+          setMatchedCards={setMatchedCards}
         />
         <Spacing marginBottom="4" />
       </Wrapper>

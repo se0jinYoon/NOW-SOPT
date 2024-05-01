@@ -10,12 +10,11 @@ const GameMain = ({
   getRandomDuplicatedItems,
   gameLevel,
   setGameLevel,
+  selectedCards,
+  setSelectedCards,
+  matchedCards,
+  setMatchedCards,
 }) => {
-  // 현재 선택된 카드 배열
-  const [selectedCards, setSelectedCards] = useState([]);
-  // 정답 된 카드 확인
-  const [matchedCards, setMatchedCards] = useState([]);
-
   // 게임 레벨 함수
   const onClickGameLevel = (num) => {
     setGameLevel(num);
