@@ -1,11 +1,19 @@
+/* eslint-disable react/prop-types */
 import styled from 'styled-components';
 
-const Header = () => {
+const Header = ({ shuffledCardItems, setShuffledCardItems, setIsFlipped, getRandomDuplicatedItems, gameLevel }) => {
+  // 리셋 함수
+  // prop으로 올리기~
+  const onClickReset = () => {
+    setShuffledCardItems(getRandomDuplicatedItems(gameLevel));
+    setIsFlipped(Array(shuffledCardItems.length).fill(false));
+  };
+
   return (
     <HeaderWrapper>
       <HeaderTitle>웨비를 찾아라</HeaderTitle>
-      <Score>3 / 5</Score>
-      <ResetBtn>RESET</ResetBtn>
+      <Score>3 / {gameLevel}</Score>
+      <ResetBtn onClick={onClickReset}>RESET</ResetBtn>
     </HeaderWrapper>
   );
 };

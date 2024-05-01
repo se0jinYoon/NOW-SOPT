@@ -1,43 +1,67 @@
+/* eslint-disable react/prop-types */
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import GAME_DATA from '../../assets';
+import { useState } from 'react';
 
-const GameMain = () => {
-  // 게임 레벨
-  const [gameLevel, setGameLevel] = useState(5);
-  // 렌더링할 랜덤 추출 배열
-  const [shuffledCardItems, setShuffledCardItems] = useState([]);
-  // 카드 뒤집혔는지
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  // 게임 레벨에 맞게 카드 랜덤 추출
-  function getRandomDuplicatedItems(arr, num) {
-    // 배열 랜덤으로 섞기
-    const shuffledCardData = arr.sort(() => 0.5 - Math.random());
-    // 게임 레벨에 맞게 추출하고 각 아이템 쌍 만들기
-    const combinedCardData = shuffledCardData.slice(0, num).flatMap((item) => [item, { ...item }]);
-    // 다시 섞기
-    const shuffledResult = combinedCardData.sort(() => 0.5 - Math.random());
-
-    return shuffledResult;
-  }
-
-  // 초기 렌더링
-  useEffect(() => {
-    setShuffledCardItems(getRandomDuplicatedItems(GAME_DATA, 5));
-  }, []);
+const GameMain = ({
+  shuffledCardItems,
+  setShuffledCardItems,
+  isFlipped,
+  setIsFlipped,
+  getRandomDuplicatedItems,
+  gameLevel,
+  setGameLevel,
+}) => {
+  // 현재 선택된 카드 배열
+  const [selectedCards, setSelectedCards] = useState([]);
+  // 정답 된 카드 확인
+  const [matchedCards, setMatchedCards] = useState([]);
 
   // 게임 레벨 함수
   const onClickGameLevel = (num) => {
     setGameLevel(num);
-    setIsFlipped(false);
-    setShuffledCardItems(getRandomDuplicatedItems(GAME_DATA, num));
+    setIsFlipped(Array(shuffledCardItems.length).fill(false));
+    setShuffledCardItems(getRandomDuplicatedItems(num));
+    setSelectedCards([]);
+    setMatchedCards([]);
   };
 
   // 카드 클릭 함수
-  const onClickCardItem = () => {
-    setIsFlipped(!isFlipped);
+  const onClickCardItem = (item, index) => {
+    if (matchedCards.includes(item.name) || selectedCards.length === 2) {
+      return;
+    }
+
+    // 카드 뒤집기
+    setIsFlipped((prevState) => {
+      const newState = [...prevState];
+      newState[index] = !newState[index];
+      return newState;
+    });
+
+    setSelectedCards((prevSelectedCards) => [...prevSelectedCards, { item, index }]);
+
+    // 카드 비교
+    if (selectedCards.length === 1) {
+      const [firstCard] = selectedCards;
+      if (firstCard.item.name === item.name) {
+        setMatchedCards((prevMatchedCards) => [...prevMatchedCards, firstCard.item.name]);
+        setSelectedCards([]);
+      } else {
+        setTimeout(() => {
+          setIsFlipped((prevState) => {
+            const newState = [...prevState];
+            newState[firstCard.index] = false;
+            newState[index] = false;
+            return newState;
+          });
+          setSelectedCards([]);
+        }, 1000);
+      }
+    }
   };
+
+  console.log(matchedCards, ' matchedCards');
+  console.log(selectedCards, ' selectedCards');
 
   return (
     <GameMainWrapper>
@@ -54,8 +78,12 @@ const GameMain = () => {
       </GameLevelWrapper>
       <CardItemWrapper>
         {shuffledCardItems.map((item, idx) => (
-          <CardItem key={item.name + idx.toString()} onClick={onClickCardItem} className={isFlipped ? 'flipped' : ''}>
-            <CardItemFront src={item.src} alt={item.name} className={isFlipped ? 'flipped' : ''} />
+          <CardItem
+            key={item.name + idx.toString()}
+            onClick={() => onClickCardItem(item, idx)}
+            className={isFlipped[idx] ? 'flipped' : ''}
+          >
+            <CardItemFront src={item.src} alt={item.name} className={isFlipped[idx] ? 'flipped' : ''} />
             <CardItemBack />
           </CardItem>
         ))}
@@ -125,7 +153,7 @@ const CardItemFront = styled.img`
   object-fit: cover;
   border: 4px double ${({ theme }) => theme.colors.black};
 
-  cursor: pointer;
+  cursor: default;
 
   backface-visibility: hidden;
   transform: rotateY(180deg);
