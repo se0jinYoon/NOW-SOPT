@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Header = ({ gameLevel, matchedCards, resetGame }) => {
   // 리셋 함수
   const onClickReset = () => {
-    resetGame();
+    resetGame(gameLevel);
   };
 
   return (
@@ -49,7 +49,7 @@ const Score = styled.span`
 `;
 
 const ResetBtn = styled.button`
-  position: absolute;
+  position: fixed;
   top: 1.3rem;
   right: 1.3rem;
 

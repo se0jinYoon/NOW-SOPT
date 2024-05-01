@@ -44,11 +44,12 @@ function App() {
   // shuffledCardItems가 변경될 때마다 isFlipped 배열 초기화
   useEffect(() => {
     setIsFlipped(Array(shuffledCardItems.length).fill(false));
-  }, [shuffledCardItems]);
+  }, [shuffledCardItems, gameLevel]);
 
   // 게임 리셋 함수
-  const resetGame = () => {
+  const resetGame = (gameLevel) => {
     setShuffledCardItems(getRandomDuplicatedItems(gameLevel));
+    console.log(shuffledCardItems)
     setIsFlipped(Array(shuffledCardItems.length).fill(false));
     setSelectedCards([]);
     setMatchedCards([]);

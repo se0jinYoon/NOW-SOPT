@@ -11,7 +11,7 @@ const Modal = ({ gameLevel, matchedCards, resetGame }) => {
 
   const onClickModalClose = () => {
     setShowModal(false);
-    resetGame();
+    resetGame(gameLevel);
   };
 
   return (
