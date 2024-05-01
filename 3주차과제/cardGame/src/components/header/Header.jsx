@@ -1,22 +1,10 @@
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
 
-const Header = ({
-  shuffledCardItems,
-  setShuffledCardItems,
-  setIsFlipped,
-  getRandomDuplicatedItems,
-  gameLevel,
-  setSelectedCards,
-  setMatchedCards,
-  matchedCards,
-}) => {
+const Header = ({ gameLevel, matchedCards, resetGame }) => {
   // 리셋 함수
   const onClickReset = () => {
-    setShuffledCardItems(getRandomDuplicatedItems(gameLevel));
-    setIsFlipped(Array(shuffledCardItems.length).fill(false));
-    setSelectedCards([]);
-    setMatchedCards([]);
+    resetGame();
   };
 
   return (

@@ -2,16 +2,7 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 
-const Modal = ({
-  shuffledCardItems,
-  setShuffledCardItems,
-  setIsFlipped,
-  getRandomDuplicatedItems,
-  gameLevel,
-  setSelectedCards,
-  setMatchedCards,
-  matchedCards,
-}) => {
+const Modal = ({ gameLevel, matchedCards, resetGame }) => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -20,10 +11,7 @@ const Modal = ({
 
   const onClickModalClose = () => {
     setShowModal(false);
-    setShuffledCardItems(getRandomDuplicatedItems(gameLevel));
-    setIsFlipped(Array(shuffledCardItems.length).fill(false));
-    setSelectedCards([]);
-    setMatchedCards([]);
+    resetGame();
   };
 
   return (

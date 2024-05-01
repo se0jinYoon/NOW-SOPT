@@ -46,42 +46,31 @@ function App() {
     setIsFlipped(Array(shuffledCardItems.length).fill(false));
   }, [shuffledCardItems]);
 
+  const resetGame = () => {
+    setShuffledCardItems(getRandomDuplicatedItems(gameLevel));
+    setIsFlipped(Array(shuffledCardItems.length).fill(false));
+    setSelectedCards([]);
+    setMatchedCards([]);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Wrapper>
-        <Modal
-          gameLevel={gameLevel}
-          matchedCards={matchedCards}
-          setIsFlipped={setIsFlipped}
-          setSelectedCards={setSelectedCards}
-          setMatchedCards={setMatchedCards}
-          getRandomDuplicatedItems={getRandomDuplicatedItems}
-          setShuffledCardItems={setShuffledCardItems}
-        />
-        <Header
-          shuffledCardItems={shuffledCardItems}
-          setShuffledCardItems={setShuffledCardItems}
-          setIsFlipped={setIsFlipped}
-          getRandomDuplicatedItems={getRandomDuplicatedItems}
-          gameLevel={gameLevel}
-          setSelectedCards={setSelectedCards}
-          setMatchedCards={setMatchedCards}
-          matchedCards={matchedCards}
-        />
+        <Modal gameLevel={gameLevel} matchedCards={matchedCards} resetGame={resetGame} />
+        <Header gameLevel={gameLevel} matchedCards={matchedCards} resetGame={resetGame} />
         <Spacing marginBottom="11" />
         <GameMain
-          setShuffledCardItems={setShuffledCardItems}
           shuffledCardItems={shuffledCardItems}
           setIsFlipped={setIsFlipped}
           isFlipped={isFlipped}
-          getRandomDuplicatedItems={getRandomDuplicatedItems}
           gameLevel={gameLevel}
           setGameLevel={setGameLevel}
           selectedCards={selectedCards}
           setSelectedCards={setSelectedCards}
           matchedCards={matchedCards}
           setMatchedCards={setMatchedCards}
+          resetGame={resetGame}
         />
         <Spacing marginBottom="4" />
       </Wrapper>

@@ -3,24 +3,20 @@ import styled from 'styled-components';
 
 const GameMain = ({
   shuffledCardItems,
-  setShuffledCardItems,
   isFlipped,
   setIsFlipped,
-  getRandomDuplicatedItems,
   gameLevel,
   setGameLevel,
   selectedCards,
   setSelectedCards,
   matchedCards,
   setMatchedCards,
+  resetGame,
 }) => {
   // 게임 레벨 함수
   const onClickGameLevel = (num) => {
     setGameLevel(num);
-    setIsFlipped(Array(shuffledCardItems.length).fill(false));
-    setShuffledCardItems(getRandomDuplicatedItems(num));
-    setSelectedCards([]);
-    setMatchedCards([]);
+    resetGame();
   };
 
   // 카드 클릭 함수
@@ -57,9 +53,6 @@ const GameMain = ({
       }
     }
   };
-
-  console.log(matchedCards, ' matchedCards');
-  console.log(selectedCards, ' selectedCards');
 
   return (
     <GameMainWrapper>
