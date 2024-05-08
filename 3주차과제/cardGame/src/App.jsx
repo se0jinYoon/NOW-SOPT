@@ -7,39 +7,23 @@ import { useState, useEffect } from 'react';
 
 import Header from './components/header/Header';
 import GameMain from './components/gameMain/GameMain';
-import Modal from './components/modal/Modal';
-import Spacing from './components/common/Spacing';
+// import Modal from './components/modal/Modal';
+import DialogModal from './components/modal/DialogModal';
 
-import GAME_DATA from './assets';
+import { getRandomDuplicatedItems } from './utils/getRandomDuplicatedItems';
+import { EASY } from './assets/constants/gameLevel';
 
 function App() {
   // 게임 레벨
-  const [gameLevel, setGameLevel] = useState(5);
+  const [gameLevel, setGameLevel] = useState(EASY);
   // 렌더링할 랜덤 추출 배열
-  const [shuffledCardItems, setShuffledCardItems] = useState([]);
+  const [shuffledCardItems, setShuffledCardItems] = useState(getRandomDuplicatedItems(EASY));
   // 카드 뒤집혔는지
   const [isFlipped, setIsFlipped] = useState(Array(shuffledCardItems.length).fill(false));
   // 현재 선택된 카드 배열
   const [selectedCards, setSelectedCards] = useState([]);
   // 정답 된 카드 확인
   const [matchedCards, setMatchedCards] = useState([]);
-
-  // 게임 레벨에 맞게 카드 랜덤 추출
-  function getRandomDuplicatedItems(num) {
-    // 배열 랜덤으로 섞기
-    const shuffledCardData = GAME_DATA.sort(() => 0.5 - Math.random());
-    // 게임 레벨에 맞게 추출하고 각 아이템 쌍 만들기
-    const combinedCardData = shuffledCardData.slice(0, num).flatMap((item) => [item, { ...item }]);
-    // 다시 섞기
-    const shuffledResult = combinedCardData.sort(() => 0.5 - Math.random());
-
-    return shuffledResult;
-  }
-
-  // 초기 렌더링
-  useEffect(() => {
-    setShuffledCardItems(getRandomDuplicatedItems(5));
-  }, []);
 
   // shuffledCardItems가 변경될 때마다 isFlipped 배열 초기화
   useEffect(() => {
@@ -58,9 +42,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Wrapper>
-        <Modal gameLevel={gameLevel} matchedCards={matchedCards} resetGame={resetGame} />
+        {/* <Modal gameLevel={gameLevel} matchedCards={matchedCards} resetGame={resetGame} /> */}
+        <DialogModal gameLevel={gameLevel} matchedCards={matchedCards} resetGame={resetGame} />
         <Header gameLevel={gameLevel} matchedCards={matchedCards} resetGame={resetGame} />
-        <Spacing marginBottom="11" />
         <GameMain
           shuffledCardItems={shuffledCardItems}
           setIsFlipped={setIsFlipped}
@@ -73,7 +57,6 @@ function App() {
           setMatchedCards={setMatchedCards}
           resetGame={resetGame}
         />
-        <Spacing marginBottom="4" />
       </Wrapper>
     </ThemeProvider>
   );

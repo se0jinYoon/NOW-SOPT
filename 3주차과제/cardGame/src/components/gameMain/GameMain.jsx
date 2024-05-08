@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
 
+import { EASY, NORMAL, HARD } from '../../assets/constants/gameLevel';
+
 const GameMain = ({
   shuffledCardItems,
   isFlipped,
@@ -57,13 +59,13 @@ const GameMain = ({
   return (
     <GameMainWrapper>
       <GameLevelWrapper>
-        <GameLevelBtn onClick={() => onClickGameLevel(5)} $selected={gameLevel === 5}>
+        <GameLevelBtn onClick={() => onClickGameLevel(EASY)} $selected={gameLevel === EASY}>
           EASY
         </GameLevelBtn>
-        <GameLevelBtn onClick={() => onClickGameLevel(7)} $selected={gameLevel === 7}>
+        <GameLevelBtn onClick={() => onClickGameLevel(NORMAL)} $selected={gameLevel === NORMAL}>
           NORMAL
         </GameLevelBtn>
-        <GameLevelBtn onClick={() => onClickGameLevel(9)} $selected={gameLevel === 9}>
+        <GameLevelBtn onClick={() => onClickGameLevel(HARD)} $selected={gameLevel === HARD}>
           HARD
         </GameLevelBtn>
       </GameLevelWrapper>
@@ -72,9 +74,9 @@ const GameMain = ({
           <CardItem
             key={item.name + idx.toString()}
             onClick={() => onClickCardItem(item, idx)}
-            className={isFlipped[idx] ? 'flipped' : ''}
+            $isFlipped={isFlipped[idx]}
           >
-            <CardItemFront src={item.src} alt={item.name} className={isFlipped[idx] ? 'flipped' : ''} />
+            <CardItemFront src={item.src} alt={item.name} />
             <CardItemBack />
           </CardItem>
         ))}
@@ -93,6 +95,8 @@ const GameMainWrapper = styled.main`
   gap: 3rem;
 
   width: 95%;
+
+  margin: 11rem 0 4rem 0;
 `;
 
 const GameLevelWrapper = styled.section`
@@ -133,7 +137,7 @@ const CardItem = styled.div`
   transition: 1s ease-in-out;
   transform-style: preserve-3d;
   perspective: 1000px;
-  transform: rotateY(${({ className }) => (className === 'flipped' ? '180deg' : '0deg')});
+  transform: rotateY(${({ $isFlipped }) => ($isFlipped ? '180deg' : '0deg')});
 `;
 
 const CardItemFront = styled.img`
@@ -163,5 +167,4 @@ const CardItemBack = styled.div`
   cursor: pointer;
 
   backface-visibility: hidden;
-  transform: rotateY(${({ className }) => (className === 'flipped' ? '180deg' : '')});
 `;
