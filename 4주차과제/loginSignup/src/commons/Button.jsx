@@ -2,8 +2,12 @@
 import styled, { css } from 'styled-components';
 
 const Button = (props) => {
-  const { content, onClickHandler } = props;
-  return <ButtonWrapper {...props} onClick={onClickHandler}>{content}</ButtonWrapper>;
+  const { content, onClick } = props;
+  return (
+    <ButtonWrapper {...props} onClick={onClick}>
+      {content}
+    </ButtonWrapper>
+  );
 };
 
 export default Button;

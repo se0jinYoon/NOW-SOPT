@@ -1,14 +1,21 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
 import Button from '../../commons/Button';
 import ButtonWrapper from '../../commons/ButtonWrapper';
 
 const Main = () => {
+  const navigate = useNavigate();
+
+  const onClickSignup = () => {
+    navigate('/signup');
+  };
   return (
     <MainWrapper>
       <MainImg src="/src/assets/gifs/modalCongrats.gif" loop="infinite" />
       <ButtonWrapper>
         <Button content="MY PAGE" />
-        <Button content="SIGN UP" />
+        <Button content="SIGN UP" onClick={onClickSignup} />
       </ButtonWrapper>
     </MainWrapper>
   );
