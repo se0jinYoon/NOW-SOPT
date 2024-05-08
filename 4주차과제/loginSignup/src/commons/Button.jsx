@@ -2,8 +2,8 @@
 import styled, { css } from 'styled-components';
 
 const Button = (props) => {
-  const { content } = props;
-  return <ButtonWrapper {...props}>{content}</ButtonWrapper>;
+  const { content, onClickHandler } = props;
+  return <ButtonWrapper {...props} onClick={onClickHandler}>{content}</ButtonWrapper>;
 };
 
 export default Button;
@@ -22,10 +22,13 @@ const ButtonWrapper = styled.button`
     width = 'auto',
     height = 'auto',
     buttonColor = 'skyblue',
-    hasBorder = false,
+    hasBorder = true,
     borderColor = 'white',
     fontColor = 'white',
     fontSize = '1.2rem',
+    hover = true,
+    hoverColor = 'blue',
+    hoverBorderColor = 'blue',
   }) => css`
     width: ${width};
     height: ${height};
@@ -33,5 +36,10 @@ const ButtonWrapper = styled.button`
     border: ${hasBorder ? `1px solid ${theme.colors[borderColor]}` : 'none'};
     color: ${theme.colors[fontColor]};
     font-size: ${fontSize};
+
+    &:hover {
+      background-color: ${hover ? theme.colors[hoverColor] : theme.colors[buttonColor]};
+      border: ${hasBorder ? `1px solid ${hover ? theme.colors[hoverBorderColor] : theme.colors[borderColor]}` : 'none'};
+    }
   `}
 `;
