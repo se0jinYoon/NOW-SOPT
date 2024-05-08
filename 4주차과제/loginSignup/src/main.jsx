@@ -1,4 +1,15 @@
 import ReactDOM from 'react-dom/client';
+import { ThemeProvider } from 'styled-components';
 import App from './App.jsx';
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+import GlobalStyle from './styles/globalStyle.js';
+import theme from './styles/theme.js';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
+  </>
+);
