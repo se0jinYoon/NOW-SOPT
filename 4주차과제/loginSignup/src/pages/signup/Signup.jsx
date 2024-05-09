@@ -46,7 +46,6 @@ const Signup = () => {
   const [inputVal, dispatch] = useReducer(reducerFn, initialSignUpState);
 
   const onChangeHandler = (e) => {
-    console.log(e.target.name);
     dispatch({ type: e.target.name, value: e.target.value });
   };
 
