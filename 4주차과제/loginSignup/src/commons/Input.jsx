@@ -2,12 +2,12 @@
 import styled from 'styled-components';
 
 const Input = (props) => {
-  const { label, children } = props;
+  const { label, children, onChangeHandler } = props;
   return (
     <InputWrapper>
       <InputContainer>
         <InputLabel>{label}</InputLabel>
-        <StyledInput />
+        <StyledInput name={label} onChange={onChangeHandler} />
       </InputContainer>
       {children}
     </InputWrapper>

@@ -1,27 +1,66 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useReducer } from 'react';
 
 import LoginSignupWrapper from '../../commons/LoginSignupWrapper';
 import ButtonWrapper from '../../commons/ButtonWrapper';
 import Button from '../../commons/Button';
 import Input from '../../commons/Input';
 
+import { SIGNUP_LABEL } from '../../assets/constants/constants';
+
+const initialSignUpState = {
+  id: '',
+  pw: '',
+  nickname: '',
+  phoneNum: '',
+};
+
+const reducerFn = (state, action) => {
+  switch (action.type) {
+    case 'ID':
+      return {
+        ...state,
+        id: action.value,
+      };
+    case 'PW':
+      return {
+        ...state,
+        pw: action.value,
+      };
+    case '닉네임':
+      return {
+        ...state,
+        nickname: action.value,
+      };
+    case '전화번호':
+      return {
+        ...state,
+        phoneNum: action.value,
+      };
+  }
+};
+
 const Signup = () => {
   const navigate = useNavigate();
+  const [inputVal, dispatch] = useReducer(reducerFn, initialSignUpState);
+
+  const onChangeHandler = (e) => {
+    console.log(e.target.name);
+    dispatch({ type: e.target.name, value: e.target.value });
+  };
 
   const onClickBack = () => {
     navigate(-1);
   };
+
   return (
     <LoginSignupWrapper title="SIGN UP">
-      <Input label="ID" />
-      <Input label="PW">
-        <InputDetail>비밀번호 형식은 8자이상, 숫자, 특수문자, 영어 알파벳이 포함되어야 합니다.</InputDetail>
-      </Input>
-      <Input label="닉네임" />
-      <Input label="전화번호">
-        <InputDetail>전화번호 형식은 010-****-**** 입니다.</InputDetail>
-      </Input>
+      {SIGNUP_LABEL.map((label, idx) => (
+        <Input key={label + idx.toString()} label={label.label} onChangeHandler={onChangeHandler}>
+          {label.detailExist && <InputDetail>{label.detail}</InputDetail>}
+        </Input>
+      ))}
       <ButtonWrapper>
         <Button content="SIGN UP" $buttonColor="blue" />
         <Button content="뒤로가기" $buttonColor="blue" onClick={onClickBack} />
