@@ -16,12 +16,13 @@ export default LoginSignupWrapper;
 const LoginSignupWrp = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  gap: 2.5rem;
 
   width: 35rem;
 
-  padding: 1rem 3rem;
+  padding: 2.5rem 1rem 4rem 1rem;
 
   border: 1px solid ${({ theme }) => theme.colors.white};
   border-radius: 0.5rem;
@@ -31,5 +32,7 @@ const LoginSignupWrp = styled.section`
 `;
 
 const Title = styled.h1`
-  font-size: 1.3rem;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 1.7rem;
+  font-weight: bolder;
 `;
