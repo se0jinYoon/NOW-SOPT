@@ -29,6 +29,7 @@ const ButtonWrapper = styled.button`
     hasBorder = true,
     borderColor = 'white',
     fontColor = 'white',
+    hoverFontColor = 'white',
     fontSize = '1.2rem',
     hover = true,
     hoverColor = 'blue',
@@ -42,6 +43,7 @@ const ButtonWrapper = styled.button`
     font-size: ${fontSize};
 
     &:hover {
+      color: ${hover ? theme.colors[hoverFontColor] : theme.colors[fontColor]};
       background-color: ${hover ? theme.colors[hoverColor] : theme.colors[$buttonColor]};
       border: ${hasBorder ? `1px solid ${hover ? theme.colors[hoverBorderColor] : theme.colors[borderColor]}` : 'none'};
     }
