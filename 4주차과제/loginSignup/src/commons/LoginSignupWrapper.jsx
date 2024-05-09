@@ -18,7 +18,7 @@ const LoginSignupWrp = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2.7rem;
 
   width: 35rem;
 
@@ -33,6 +33,7 @@ const LoginSignupWrp = styled.section`
 
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.white};
+
   font-size: 1.7rem;
   font-weight: bolder;
 `;

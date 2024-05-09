@@ -25,7 +25,7 @@ const ButtonWrapper = styled.button`
     theme,
     width = 'auto',
     height = 'auto',
-    buttonColor = 'skyblue',
+    $buttonColor = 'skyblue',
     hasBorder = true,
     borderColor = 'white',
     fontColor = 'white',
@@ -36,13 +36,13 @@ const ButtonWrapper = styled.button`
   }) => css`
     width: ${width};
     height: ${height};
-    background-color: ${theme.colors[buttonColor]};
+    background-color: ${theme.colors[$buttonColor]};
     border: ${hasBorder ? `1px solid ${theme.colors[borderColor]}` : 'none'};
     color: ${theme.colors[fontColor]};
     font-size: ${fontSize};
 
     &:hover {
-      background-color: ${hover ? theme.colors[hoverColor] : theme.colors[buttonColor]};
+      background-color: ${hover ? theme.colors[hoverColor] : theme.colors[$buttonColor]};
       border: ${hasBorder ? `1px solid ${hover ? theme.colors[hoverBorderColor] : theme.colors[borderColor]}` : 'none'};
     }
   `}

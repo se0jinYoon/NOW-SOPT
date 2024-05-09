@@ -5,8 +5,11 @@ const Input = (props) => {
   const { label, children } = props;
   return (
     <InputWrapper>
-      <InputLabel>{label}</InputLabel>
-      <StyledInput />
+      <InputContainer>
+        <InputLabel>{label}</InputLabel>
+        <StyledInput />
+      </InputContainer>
+      {children}
     </InputWrapper>
   );
 };
@@ -14,12 +17,16 @@ const Input = (props) => {
 export default Input;
 
 const InputWrapper = styled.div`
+  position: relative;
+`;
+
+const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
 
-  width: 25rem;
+  width: 28rem;
 `;
 
 const InputLabel = styled.label`
@@ -30,7 +37,7 @@ const InputLabel = styled.label`
 `;
 
 const StyledInput = styled.input`
-  width: 17rem;
+  width: 20rem;
 
   padding: 0.5rem 0.7rem;
 
