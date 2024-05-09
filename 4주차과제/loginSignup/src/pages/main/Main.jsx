@@ -10,11 +10,14 @@ const Main = () => {
   const onClickSignup = () => {
     navigate('/signup');
   };
+  const onClickMypage = () => {
+    navigate('/mypage');
+  };
   return (
     <MainWrapper>
       <MainImg src="/src/assets/gifs/modalCongrats.gif" loop="infinite" />
       <ButtonWrapper>
-        <Button content="MY PAGE" />
+        <Button content="MY PAGE" onClick={onClickMypage} />
         <Button content="SIGN UP" onClick={onClickSignup} />
       </ButtonWrapper>
     </MainWrapper>

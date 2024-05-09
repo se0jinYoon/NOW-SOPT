@@ -1,9 +1,15 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 import LoginSignupWrapper from '../../commons/LoginSignupWrapper';
 import Button from '../../commons/Button';
 
 const MyPage = () => {
+  const navigate = useNavigate();
+  const onClickHome = () => {
+    navigate('/');
+  };
+
   return (
     <LoginSignupWrapper title="MY PAGE">
       <UserInfoWrapper>
@@ -26,6 +32,7 @@ const MyPage = () => {
         hoverColor="lightPink"
         fontColor="black"
         hoverFontColor="black"
+        onClick={onClickHome}
       />
     </LoginSignupWrapper>
   );
