@@ -9,4 +9,6 @@ const SIGNUP_LABEL = [
   { label: '전화번호', detailExist: true, detail: '전화번호 형식은 010-****-**** 입니다.' },
 ];
 
-export { SIGNUP_LABEL };
+const LOGIN_LABEL = [{ label: 'ID' }, { label: 'PW' }];
+
+export { SIGNUP_LABEL, LOGIN_LABEL };

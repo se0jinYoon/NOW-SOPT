@@ -45,7 +45,7 @@ const reducerFn = (state, action) => {
 };
 
 const Signup = (props) => {
-  const { userId, setUserId } = props;
+  const { setUserId } = props;
 
   const navigate = useNavigate();
   const [inputVal, dispatch] = useReducer(reducerFn, initialSignUpState);
@@ -63,7 +63,6 @@ const Signup = (props) => {
       const response = await postSignup(inputVal);
       const memberId = response.headers.location;
       setUserId(memberId);
-      console.log(memberId);
 
       alert('🥳 회원가입이 성공적으로 완료되었습니다! 🥳');
       navigate('/login');
