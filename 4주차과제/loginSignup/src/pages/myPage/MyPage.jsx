@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { useEffect, useState, useReducer } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import LoginSignupWrapper from '../../commons/LoginSignupWrapper';
 import Button from '../../commons/Button';
 import Input from '../../commons/Input';
@@ -10,9 +13,6 @@ import useGetUserInfo from '../../hooks/useGetUserInfo';
 import usePatchChangePw from '../../hooks/usePatchChangePw';
 
 import { MYPAGE_LABEL, CHANGE_PW_LABEL } from '../../assets/constants/constants';
-
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const initialPwState = {
   previousPassword: '',
@@ -47,15 +47,15 @@ const MyPage = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
 
+  const userInfo = useGetUserInfo(userId);
+  const { submitChangePw } = usePatchChangePw();
+
   const [isToggleOpen, setIsToggleOpen] = useState(false);
   const [inputVal, dispatch] = useReducer(reducerFn, initialPwState);
 
   const onChangeHandler = (e) => {
     dispatch({ type: e.target.id, value: e.target.value });
   };
-
-  const userInfo = useGetUserInfo(userId);
-  const { submitChangePw } = usePatchChangePw();
 
   const onClickValid = () => {
     for (const { label, id } of CHANGE_PW_LABEL) {
