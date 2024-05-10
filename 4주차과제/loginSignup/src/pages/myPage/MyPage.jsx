@@ -6,8 +6,8 @@ import LoginSignupWrapper from '../../commons/LoginSignupWrapper';
 import Button from '../../commons/Button';
 import Input from '../../commons/Input';
 
-import { getUserInfo } from '../../apis/getUserInfo';
-import { patchChangePw } from '../../apis/patchChangePw';
+import useGetUserInfo from '../../hooks/useGetUserInfo';
+import usePatchChangePw from '../../hooks/usePatchChangePw';
 
 import { MYPAGE_LABEL, CHANGE_PW_LABEL } from '../../assets/constants/constants';
 
@@ -47,11 +47,6 @@ const MyPage = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
 
-  const [userInfo, setUserInfo] = useState({
-    authenticationId: '',
-    nickname: '',
-    phone: '',
-  });
   const [isToggleOpen, setIsToggleOpen] = useState(false);
   const [inputVal, dispatch] = useReducer(reducerFn, initialPwState);
 
@@ -59,54 +54,20 @@ const MyPage = () => {
     dispatch({ type: e.target.id, value: e.target.value });
   };
 
-  const submitChangePw = async () => {
-    // eslint-disable-next-line no-unused-vars
-    const { inputVoidErrorMessage, ...requestBody } = inputVal;
-    try {
-      const response = await patchChangePw(requestBody, userId);
-      console.log(response);
-      alert(`✨ ${response.data.message}✨`);
-      navigate('/login');
-    } catch (error) {
-      console.log(error);
-      if (error.response) {
-        const status = error.response.status;
-        if (status === 400) {
-          alert(error.response.data.message);
-        } else if (status === 403) {
-          alert(error.response.data.message);
-        }
-      }
-    }
-  };
+  const userInfo = useGetUserInfo(userId);
+  const { submitChangePw } = usePatchChangePw();
 
   const onClickValid = () => {
-    console.log(inputVal);
     if (inputVal.previousPassword.trim().length === 0) {
       dispatch({ type: 'inputVoidError', value: '기존 비밀번호가 입력되지 않았습니다.' });
-      // alert(inputVal.inputVoidErrorMessage);
     } else if (inputVal.newPassword.trim().length === 0) {
       dispatch({ type: 'inputVoidError', value: '새로운 비밀번호가 입력되지 않았습니다.' });
-      // alert(inputVal.inputVoidErrorMessage);
     } else if (inputVal.newPasswordVerification.trim().length === 0) {
       dispatch({ type: 'inputVoidError', value: '비밀번호 확인이 입력되지 않았습니다.' });
     } else {
-      submitChangePw();
+      submitChangePw(inputVal, userId);
     }
   };
-
-  useEffect(() => {
-    async function fetchUserInfo() {
-      try {
-        const response = await getUserInfo(userId);
-        setUserInfo(response.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    fetchUserInfo();
-  }, []);
 
   useEffect(() => {
     inputVal.inputVoidErrorMessage !== '' && alert(inputVal.inputVoidErrorMessage);
@@ -171,6 +132,7 @@ const UserInfoLabel = styled.span`
 
 const UserInfoContent = styled.span`
   color: ${({ theme }) => theme.colors.white};
+
   font-size: 1.2rem;
 `;
 
@@ -184,8 +146,9 @@ const ToggleTitleWrapper = styled.div`
 `;
 
 const ToggleTitle = styled.h2`
-  font-size: 1.2rem;
   margin-right: 1rem;
+
+  font-size: 1.2rem;
 `;
 
 const ToggleWrapper = styled.div`

@@ -10,7 +10,7 @@ import LoginSignupWrapper from '../../commons/LoginSignupWrapper';
 
 import { LOGIN_LABEL } from '../../assets/constants/constants';
 
-import { postLogin } from '../../apis/postLogin';
+import usePostLogin from '../../hooks/usePostLogin';
 
 const initialLoginState = {
   authenticationId: '',
@@ -36,33 +36,18 @@ const Login = () => {
   const navigate = useNavigate();
   const [inputVal, dispatch] = useReducer(reducerFn, initialLoginState);
 
+  const { submitLogin } = usePostLogin();
+
+  const onClickLogin = () => {
+    submitLogin(inputVal);
+  };
+
   const onClickSignup = () => {
     navigate('/signUp');
   };
 
   const onChangeHandler = (e) => {
     dispatch({ type: e.target.id, value: e.target.value });
-  };
-
-  const submitLogin = async () => {
-    try {
-      const response = await postLogin(inputVal);
-      const userId = response.headers.location;
-
-      navigate(`/mypage/${userId}`);
-    } catch (error) {
-      console.log(error);
-      if (error.response) {
-        const status = error.response.status;
-        if (status === 400) {
-          alert(error.response.data.message);
-        } else if (status === 404) {
-          alert(error.response.data.message);
-        } else if (status === 401) {
-          alert(error.response.data.message);
-        }
-      }
-    }
   };
 
   return (
@@ -72,7 +57,7 @@ const Login = () => {
         <Input key={label + idx.toString()} label={label.label} onChangeHandler={onChangeHandler} />
       ))}
       <ButtonWrapper>
-        <Button content="LOGIN" $buttonColor="blue" onClick={submitLogin}></Button>
+        <Button content="LOGIN" $buttonColor="blue" onClick={onClickLogin}></Button>
         <Button content="SIGN UP" $buttonColor="blue" onClick={onClickSignup}></Button>
       </ButtonWrapper>
     </LoginSignupWrapper>
