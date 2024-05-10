@@ -85,5 +85,6 @@ const InputDetail = styled.p`
   right: 0;
 
   color: ${({ theme }) => theme.colors.black};
+
   font-size: 0.75rem;
 `;

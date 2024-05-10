@@ -71,5 +71,6 @@ const LoginImg = styled.img`
   height: 13rem;
 
   border-radius: 0.5rem;
+
   object-fit: cover;
 `;

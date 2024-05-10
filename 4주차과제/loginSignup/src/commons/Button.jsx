@@ -13,40 +13,39 @@ const Button = (props) => {
 export default Button;
 
 const ButtonWrapper = styled.button`
-    width = auto,
-    height = auto,
   display: flex;
   justify-content: center;
   align-items: center;
 
+  width = auto;
+  height = auto;
+
   padding: 0.5rem 0.8rem;
+
+  border: 1px solid ${({ theme }) => theme.colors.white};
   border-radius: 0.3rem;
+
+  font-size: 1.2rem;
   cursor: pointer;
 
   ${({
     theme,
-    $buttonColor = 'skyblue',
-    hasBorder = true,
-    $borderColor = 'white',
-    fontColor = 'white',
-    $hoverFontColor = 'white',
-    fontSize = '1.2rem',
-    hover = true,
-    $hoverColor = 'blue',
-    hoverBorderColor = 'blue',
     $marginTop = '',
+    $buttonColor = 'skyblue',
+    $fontColor = 'white',
+    $hoverFontColor = 'white',
+    $hoverColor = 'blue',
   }) => css`
-    background-color: ${theme.colors[$buttonColor]};
-    border: ${hasBorder ? `1px solid ${theme.colors[$borderColor]}` : 'none'};
-    color: ${theme.colors[fontColor]};
-    font-size: ${fontSize};
     margin-top: ${$marginTop};
+
+    background-color: ${theme.colors[$buttonColor]};
+    color: ${theme.colors[$fontColor]};
+
     &:hover {
-      color: ${hover ? theme.colors[$hoverFontColor] : theme.colors[fontColor]};
-      background-color: ${hover ? theme.colors[$hoverColor] : theme.colors[$buttonColor]};
-      border: ${hasBorder
-        ? `1px solid ${hover ? theme.colors[hoverBorderColor] : theme.colors[$borderColor]}`
-        : 'none'};
+      border: 1px solid ${({ theme }) => theme.colors.blue};
+
+      color: ${theme.colors[$hoverFontColor]};
+      background-color: ${theme.colors[$hoverColor]};
     }
   `}
 `;
