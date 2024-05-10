@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -44,9 +45,7 @@ const reducerFn = (state, action) => {
   }
 };
 
-const Signup = (props) => {
-  const { setUserId } = props;
-
+const Signup = () => {
   const navigate = useNavigate();
   const [inputVal, dispatch] = useReducer(reducerFn, initialSignUpState);
 
@@ -62,7 +61,6 @@ const Signup = (props) => {
     try {
       const response = await postSignup(inputVal);
       const memberId = response.headers.location;
-      setUserId(memberId);
 
       alert('🥳 회원가입이 성공적으로 완료되었습니다! 🥳');
       navigate('/login');

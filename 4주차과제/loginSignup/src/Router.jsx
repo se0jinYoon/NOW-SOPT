@@ -6,14 +6,13 @@ import Signup from './pages/signup/Signup';
 import Login from './pages/login/Login';
 import MyPage from './pages/myPage/MyPage';
 
-const Router = (props) => {
-  const { userId, setUserId } = props;
+const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/signup" element={<Signup setUserId={setUserId} />} />
-        <Route path="/login" element={<Login setUserId={setUserId} />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/mypage/:userId" element={<MyPage />} />
       </Routes>
     </BrowserRouter>

@@ -32,8 +32,7 @@ const reducerFn = (state, action) => {
   }
 };
 
-const Login = (props) => {
-  const { setUserId } = props;
+const Login = () => {
   const navigate = useNavigate();
   const [inputVal, dispatch] = useReducer(reducerFn, initialLoginState);
 
@@ -49,7 +48,6 @@ const Login = (props) => {
     try {
       const response = await postLogin(inputVal);
       const userId = response.headers.location;
-      setUserId(userId);
 
       navigate(`/mypage/${userId}`);
     } catch (error) {
