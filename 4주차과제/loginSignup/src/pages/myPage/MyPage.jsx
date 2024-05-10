@@ -113,7 +113,7 @@ const MyPage = () => {
   }, [inputVal.inputVoidErrorMessage]);
 
   const onClickHome = () => {
-    navigate('/');
+    navigate('/', { state: { userId } });
   };
 
   const onClickToggle = () => {

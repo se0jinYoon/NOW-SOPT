@@ -1,17 +1,18 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import Button from '../../commons/Button';
 import ButtonWrapper from '../../commons/ButtonWrapper';
 
 const Main = () => {
+  const location = useLocation();
   const navigate = useNavigate();
 
   const onClickSignup = () => {
     navigate('/signup');
   };
   const onClickMypage = () => {
-    navigate('/mypage');
+    navigate(`/mypage/${location.state.userId}`);
   };
   return (
     <MainWrapper>
