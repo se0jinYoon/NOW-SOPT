@@ -27,25 +27,25 @@ const ButtonWrapper = styled.button`
     height = 'auto',
     $buttonColor = 'skyblue',
     hasBorder = true,
-    borderColor = 'white',
+    $borderColor = 'white',
     fontColor = 'white',
-    hoverFontColor = 'white',
+    $hoverFontColor = 'white',
     fontSize = '1.2rem',
     hover = true,
-    hoverColor = 'blue',
+    $hoverColor = 'blue',
     hoverBorderColor = 'blue',
   }) => css`
     width: ${width};
     height: ${height};
     background-color: ${theme.colors[$buttonColor]};
-    border: ${hasBorder ? `1px solid ${theme.colors[borderColor]}` : 'none'};
+    border: ${hasBorder ? `1px solid ${theme.colors[$borderColor]}` : 'none'};
     color: ${theme.colors[fontColor]};
     font-size: ${fontSize};
 
     &:hover {
-      color: ${hover ? theme.colors[hoverFontColor] : theme.colors[fontColor]};
-      background-color: ${hover ? theme.colors[hoverColor] : theme.colors[$buttonColor]};
-      border: ${hasBorder ? `1px solid ${hover ? theme.colors[hoverBorderColor] : theme.colors[borderColor]}` : 'none'};
+      color: ${hover ? theme.colors[$hoverFontColor] : theme.colors[fontColor]};
+      background-color: ${hover ? theme.colors[$hoverColor] : theme.colors[$buttonColor]};
+      border: ${hasBorder ? `1px solid ${hover ? theme.colors[hoverBorderColor] : theme.colors[$borderColor]}` : 'none'};
     }
   `}
 `;
