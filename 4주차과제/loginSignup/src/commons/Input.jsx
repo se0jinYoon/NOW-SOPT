@@ -37,7 +37,7 @@ const InputLabel = styled.label`
 `;
 
 const StyledInput = styled.input`
-  width: 20rem;
+  width: 17rem;
 
   padding: 0.5rem 0.7rem;
 

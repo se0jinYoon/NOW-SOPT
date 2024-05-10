@@ -11,4 +11,21 @@ const SIGNUP_LABEL = [
 
 const LOGIN_LABEL = [{ label: 'ID' }, { label: 'PW' }];
 
-export { SIGNUP_LABEL, LOGIN_LABEL };
+const MYPAGE_LABEL = [
+  {
+    label: 'ID',
+    content: 'authenticationId',
+  },
+  {
+    label: '닉네임',
+    content: 'nickname',
+  },
+  {
+    label: '전화번호',
+    content: 'phone',
+  },
+];
+
+const CHANGE_PW_LABEL = [{ label: '기존 비밀번호' }, { label: '새로운 비밀번호' }, { label: '비밀번호 확인' }];
+
+export { SIGNUP_LABEL, LOGIN_LABEL, MYPAGE_LABEL, CHANGE_PW_LABEL };

@@ -13,6 +13,8 @@ const Button = (props) => {
 export default Button;
 
 const ButtonWrapper = styled.button`
+    width = auto,
+    height = auto,
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,8 +25,6 @@ const ButtonWrapper = styled.button`
 
   ${({
     theme,
-    width = 'auto',
-    height = 'auto',
     $buttonColor = 'skyblue',
     hasBorder = true,
     $borderColor = 'white',
@@ -34,18 +34,19 @@ const ButtonWrapper = styled.button`
     hover = true,
     $hoverColor = 'blue',
     hoverBorderColor = 'blue',
+    $marginTop = '',
   }) => css`
-    width: ${width};
-    height: ${height};
     background-color: ${theme.colors[$buttonColor]};
     border: ${hasBorder ? `1px solid ${theme.colors[$borderColor]}` : 'none'};
     color: ${theme.colors[fontColor]};
     font-size: ${fontSize};
-
+    margin-top: ${$marginTop};
     &:hover {
       color: ${hover ? theme.colors[$hoverFontColor] : theme.colors[fontColor]};
       background-color: ${hover ? theme.colors[$hoverColor] : theme.colors[$buttonColor]};
-      border: ${hasBorder ? `1px solid ${hover ? theme.colors[hoverBorderColor] : theme.colors[$borderColor]}` : 'none'};
+      border: ${hasBorder
+        ? `1px solid ${hover ? theme.colors[hoverBorderColor] : theme.colors[$borderColor]}`
+        : 'none'};
     }
   `}
 `;
