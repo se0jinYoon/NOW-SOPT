@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useReducer } from 'react';
@@ -9,11 +10,13 @@ import Input from '../../commons/Input';
 
 import { SIGNUP_LABEL } from '../../assets/constants/constants';
 
+import { postSignup } from '../../apis/postSignup';
+
 const initialSignUpState = {
-  id: '',
-  pw: '',
+  authenticationId: '',
+  password: '',
   nickname: '',
-  phoneNum: '',
+  phone: '',
 };
 
 const reducerFn = (state, action) => {
@@ -21,12 +24,12 @@ const reducerFn = (state, action) => {
     case 'ID':
       return {
         ...state,
-        id: action.value,
+        authenticationId: action.value,
       };
     case 'PW':
       return {
         ...state,
-        pw: action.value,
+        password: action.value,
       };
     case '닉네임':
       return {
@@ -36,21 +39,43 @@ const reducerFn = (state, action) => {
     case '전화번호':
       return {
         ...state,
-        phoneNum: action.value,
+        phone: action.value,
       };
   }
 };
 
-const Signup = () => {
+const Signup = (props) => {
+  const { userId, setUserId } = props;
+
   const navigate = useNavigate();
   const [inputVal, dispatch] = useReducer(reducerFn, initialSignUpState);
 
   const onChangeHandler = (e) => {
-    dispatch({ type: e.target.name, value: e.target.value });
+    dispatch({ type: e.target.id, value: e.target.value });
   };
 
   const onClickBack = () => {
     navigate(-1);
+  };
+
+  const submitSignup = async () => {
+    try {
+      const response = await postSignup(inputVal);
+      const memberId = response.headers.location;
+      setUserId(memberId);
+      console.log(memberId);
+
+      alert('🥳 회원가입이 성공적으로 완료되었습니다! 🥳');
+      navigate('/login');
+    } catch (error) {
+      console.log(error);
+      if (error.response) {
+        const status = error.response.status;
+        if (status === 400) {
+          alert(error.response.data.message);
+        }
+      }
+    }
   };
 
   return (
@@ -61,7 +86,7 @@ const Signup = () => {
         </Input>
       ))}
       <ButtonWrapper>
-        <Button content="SIGN UP" $buttonColor="blue" />
+        <Button content="SIGN UP" $buttonColor="blue" onClick={submitSignup} />
         <Button content="뒤로가기" $buttonColor="blue" onClick={onClickBack} />
       </ButtonWrapper>
     </LoginSignupWrapper>

@@ -7,7 +7,7 @@ const Input = (props) => {
     <InputWrapper>
       <InputContainer>
         <InputLabel>{label}</InputLabel>
-        <StyledInput name={label} onChange={onChangeHandler} />
+        <StyledInput id={label} onChange={onChangeHandler} />
       </InputContainer>
       {children}
     </InputWrapper>
