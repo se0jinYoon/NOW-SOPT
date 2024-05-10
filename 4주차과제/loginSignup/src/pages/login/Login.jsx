@@ -8,9 +8,9 @@ import Button from '../../commons/Button';
 import Input from '../../commons/Input';
 import LoginSignupWrapper from '../../commons/LoginSignupWrapper';
 
-import { LOGIN_LABEL } from '../../assets/constants/constants';
-
 import usePostLogin from '../../hooks/usePostLogin';
+
+import { LOGIN_LABEL } from '../../assets/constants/constants';
 
 const initialLoginState = {
   authenticationId: '',

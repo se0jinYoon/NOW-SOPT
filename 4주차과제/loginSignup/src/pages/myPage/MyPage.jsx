@@ -58,15 +58,16 @@ const MyPage = () => {
   const { submitChangePw } = usePatchChangePw();
 
   const onClickValid = () => {
-    if (inputVal.previousPassword.trim().length === 0) {
-      dispatch({ type: 'inputVoidError', value: '기존 비밀번호가 입력되지 않았습니다.' });
-    } else if (inputVal.newPassword.trim().length === 0) {
-      dispatch({ type: 'inputVoidError', value: '새로운 비밀번호가 입력되지 않았습니다.' });
-    } else if (inputVal.newPasswordVerification.trim().length === 0) {
-      dispatch({ type: 'inputVoidError', value: '비밀번호 확인이 입력되지 않았습니다.' });
-    } else {
-      submitChangePw(inputVal, userId);
+    for (const { label, id } of CHANGE_PW_LABEL) {
+      const inputValue = inputVal[id];
+
+      if (!inputValue.trim()) {
+        dispatch({ type: 'inputVoidError', value: `${label}(이)가 입력되지 않았습니다.` });
+        return;
+      }
     }
+
+    submitChangePw(inputVal, userId);
   };
 
   useEffect(() => {
@@ -89,7 +90,6 @@ const MyPage = () => {
           <UserInfoContent>{userInfo[label.content]}</UserInfoContent>
         </UserInfoWrapper>
       ))}
-
       <Button
         content="홈으로"
         $buttonColor="lightPink"

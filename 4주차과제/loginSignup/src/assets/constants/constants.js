@@ -26,6 +26,10 @@ const MYPAGE_LABEL = [
   },
 ];
 
-const CHANGE_PW_LABEL = [{ label: '기존 비밀번호' }, { label: '새로운 비밀번호' }, { label: '비밀번호 확인' }];
+const CHANGE_PW_LABEL = [
+  { label: '기존 비밀번호', id: 'previousPassword' },
+  { label: '새로운 비밀번호', id: 'newPassword' },
+  { label: '비밀번호 확인', id: 'newPasswordVerification' },
+];
 
 export { SIGNUP_LABEL, LOGIN_LABEL, MYPAGE_LABEL, CHANGE_PW_LABEL };
